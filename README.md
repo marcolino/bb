@@ -1,4 +1,1 @@
-ang-news
-========
-
-Angular news tutorial
+A
