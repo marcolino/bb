@@ -29,21 +29,28 @@ app.controller('PostsCtrl', function ($scope, Post) {
 });
 */
 
-app.controller('PostsCtrl', function ($scope, Post) {
-  $scope.posts = Post.all;
+app.controller('PostsCtrl', function ($scope, $location, Post) {
+
+  if ($location.path() === '/') {
+    $scope.posts = Post.all;
+  }
  
+/*
   $scope.resetPost = function () {
     $scope.post = {url: 'http://', title: ''};
   };
 
   $scope.resetPost();
- 
+
   $scope.submitPost = function () {
-    Post.create($scope.post).then(function () {
-      $scope.resetPost();
+    Post.create($scope.post).then(function (ref) {
+      //$scope.resetPost();
+      console.log(ref);
+      $location.path('/posts/' + ref.name());
     });
   };
- 
+*/
+
   $scope.deletePost = function (postId) {
     Post.delete(postId);
   };
