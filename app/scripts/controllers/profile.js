@@ -4,8 +4,6 @@ app.controller('ProfileCtrl',
   function ($scope, $routeParams, Post, User) {
     $scope.user = User.findByUsername($routeParams.username);
 
-    $scope.user.$on('loaded', populatePosts);
- 
     function populatePosts () {
       $scope.posts = {};
  
@@ -13,5 +11,7 @@ app.controller('ProfileCtrl',
         $scope.posts[postId] = Post.find(postId);
       });
     }
+ 
+    $scope.user.$on('loaded', populatePosts);
  
   });
