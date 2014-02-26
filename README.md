@@ -1,4 +1,4 @@
 ang-news
 ========
 
-Angular news tutorial
+Angular.js ang-news tutorial source code
