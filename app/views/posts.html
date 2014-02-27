@@ -1,21 +1,3 @@
-<!--
-<div ng-repeat="(postId, post) in posts">
-  <a href="{{ post.url }}">{{ post.title }}</a>
-  <a href="#/posts/{{ postId }}">comments</a>
-  <a ng-click="deletePost(postId)">delete</a>
-</div>
- 
-<form ng-submit="submitPost()">
-  <input type="text" ng-model="post.title" />
-  <input type="text" ng-model="post.url" />
-  <input type="submit" value="Add Post" />
-</form>
--->
-<!--
-Posts: {{ posts }}<br />
-Post: {{ post }}
--->
-
 <div class="container posts-page">
  
   <div class="post row" ng-repeat="(postId, post) in posts">
@@ -31,14 +13,17 @@ Post: {{ post }}
         </a>
       </div>
 
-      <div>
-        <a href="#/posts/{{ postId }}">comments</a>
-        <a ng-click="deletePost(postId)">delete</a>
-      </div>
+      <span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span>
+      —
+      <a href="#/posts/{{ postId }}">comments</a>
+      <a ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username">delete</a>
+
     </div>
+<!--
     <div class="col-md-2">
       
     </div>
+-->
  
   </div>
  
