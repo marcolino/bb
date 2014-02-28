@@ -1,33 +1,4 @@
 'use strict';
- 
-/*
-app.controller('PostsCtrl', function ($scope, Post) {
-  //$scope.posts = [];
-  $scope.posts = Post.get();
-  $scope.resetPost = function () { $scope.post = {url: 'http://', title: ''}; };
-  $scope.resetPost();
-
-  $scope.submitPost = function () {
-    //$scope.posts.push($scope.post);
-    //Post.save($scope.post);
-	  Post.save($scope.post, function (ref) {
-          $scope.posts[ref.name] = $scope.post;
-          //$scope.post = {url: 'http://', title: ''};
-          $scope.resetPost();
-        });
-  };
-
-  //$scope.deletePost = function (index) {
-  //    //$scope.posts.splice(index, 1);
-  //};
-  $scope.deletePost = function (postId) {
-    Post.delete({id: postId}, function () {
-        delete $scope.posts[postId];
-      });
-  };
-
-});
-*/
 
 app.controller('PostsCtrl', function ($scope, $location, Post) {
 
@@ -35,7 +6,6 @@ app.controller('PostsCtrl', function ($scope, $location, Post) {
     $scope.posts = Post.all;
   }
  
-/*
   $scope.resetPost = function () {
     $scope.post = {url: 'http://', title: ''};
   };
@@ -49,7 +19,30 @@ app.controller('PostsCtrl', function ($scope, $location, Post) {
       $location.path('/posts/' + ref.name());
     });
   };
-*/
+
+  $scope.upVotePost = function (postId, upVoted) {
+    if (upVoted) {
+      Post.clearVote(postId, upVoted);
+    } else {
+      Post.upVote(postId);
+    }
+  };
+   
+  $scope.downVotePost = function (postId, downVoted) {
+    if (downVoted) {
+      Post.clearVote(postId, !downVoted);
+    } else {
+      Post.downVote(postId);
+    }
+  };
+   
+  $scope.upVoted = function (post) {
+    return Post.upVoted(post);
+  };
+   
+  $scope.downVoted = function (post) {
+    return Post.downVoted(post);
+  };
 
   $scope.deletePost = function (postId) {
     Post.delete(postId);

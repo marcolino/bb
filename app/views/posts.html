@@ -2,8 +2,10 @@
  
   <div class="post row" ng-repeat="(postId, post) in posts">
     <div class="col-xs-1">
- 
+      <div class="vote up"><span ng-hide="downVoted(post)" ng-click="upVotePost(postId, upVoted(post))">▲</span></div>
+      <div class="vote down"><span ng-hide="upVoted(post)" ng-click="downVotePost(postId, downVoted(post))">▼</span></div>
     </div>
+
     <div class="col-md-9 col-xs-11">
  
       <div class="info">
@@ -13,18 +15,19 @@
         </a>
       </div>
 
+      <span>{{ post.score || 0 }} votes</span>
+      &mdash;
       <span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span>
-      —
+      &mdash;
       <a href="#/posts/{{ postId }}">comments</a>
       <a ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username">delete</a>
 
     </div>
-<!--
+
     <div class="col-md-2">
       
     </div>
--->
- 
+
   </div>
  
 </div>
