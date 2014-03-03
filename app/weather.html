@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      body {
+      	font-family: 'Open Sans', sans-serif;
+      	background-color: #181818;
+        padding-top: 40px; /* TODO: center vertically in JS */
+
+      }
+      .well {
+        margin: 1px !important;
+        padding: 3px !important;
+      }
+      .col-xs-1,
+      .col-xs-2,
+      .col-xs-3,
+      .col-xs-4,
+      .col-xs-5,
+      .col-xs-6,
+      .col-xs-7,
+      .col-xs-8,
+      .col-xs-9,
+      .col-xs-10,
+      .col-xs-11,
+      .col-xs-12 {
+        padding: 0px !important;
+      }
+
+      .container-fixed { /* custom fixed container */
+        margin: 0 auto;
+        max-width: 800px;
+      }
+      .weather-title {
+      	font-size: 3.0em;
+      }
+      .weather-subtitle {
+      	font-size: 1.2em;
+      }
+      .weather-temperature {
+        font-size: 5.0em;
+        font-weight: bold;
+      }
+      .weather-icon {
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container-fixed">
+
+  	  <div class="row weather-title">
+        <div class="col-xs-12"><div class="well"><p>CITY - Weather conditions</p></div></div>
+      </div>
+      <div class="row weather-subtitle">
+        <div class="col-xs-6"><div class="well">Current weather</div></div>
+        <div class="col-xs-6"><div class="well">Forecast</div></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 weather-temperature"><div class="well">24&deg;</div></div>
+        <div class="col-xs-3 weather-icon"><div class="well"><img src="http://makerfairechicagonorthside.files.wordpress.com/2012/04/sunny.jpg" height="100"/></div></div>
+        <div class="col-xs-3"><div class="well">{{ w.fc.day1 }}</div></div>
+        <div class="col-xs-3"><div class="well">{{ w.fc.day3 }}</div></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 weather-description"><div class="well">Thunderstorm</div></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 weather-humidity"><div class="well">Humidity: 48%</div></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 weather-wind"><div class="well">Wind: SW at 5 mps</div></div>
+      </div>
+  
+      </div> <!-- /container -->
+
+  </body>
+</html>

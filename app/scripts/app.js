@@ -31,6 +31,10 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/register.html',
         controller: 'AuthCtrl'
       })
+    .when('/weather', {
+        templateUrl: 'views/weather.html',
+        controller: 'WeatherCtrl'
+      })
     .otherwise({
         redirectTo: '/'
       });

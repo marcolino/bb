@@ -2,7 +2,7 @@
  
   <h2>Log In</h2>
  
-  <form ng-submit="login()">
+  <form ng-submit="login()" form-autofill-fix>
     <p ng-show="error" class="text-danger">{{ error }}</p>
     <input type="email" ng-model="user.email" placeholder="Email" class="form-control"><br>
     <input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>

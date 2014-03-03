@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="span6">
+        <div class="row ">
+            <div class="span3">
+                25%
+            </div>
+            <div class="span3">
+                25%
+            </div>
+        </div>
+        <div class="row ">
+            <div class="span6">
+                50%
+            </div>
+        </div>
+    </div>
+    <div class="span3">
+        25%
+    </div>
+    <div class="span3">
+        25%
+    </div>
+</div>
+
+<div id="weather">
+  <h2><i class="icon-32"></i> {{ weather.weather[0].temp }}&deg;{{ weather.weather[0].units.temp }}</h2>
+  <ul>
+    <li>{{ weather.city }}, {{ weather.region }} </li>
+    <li class="currently">{{ weather.currently }}</li>
+    <li>{{ weather.wind.direction }} {{ weather.wind.speed }} {{ weather.units.speed }}</li>
+  </ul>
+</div>
+
+<div class="panel">
+ 
+  <h2>Weather</h2>
+ 
+  <h5>Current weather is: {{ weather.weather[0].description }}</h5>
+  <h5>Forecast weather is:
+{{ forecast.list[0].weather[0].description }},
+{{ forecast.list[1].weather[0].description }},
+{{ forecast.list[2].weather[0].description }},
+{{ forecast.list[3].weather[0].description }},
+{{ forecast.list[4].weather[0].description }},
+{{ forecast.list[5].weather[0].description }},
+{{ forecast.list[6].weather[0].description }},
+  </h5>
+</div>
