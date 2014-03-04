@@ -17,7 +17,9 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/weather.css">
+    <link rel="stylesheet" href="styles/weather.css"> <!-- TODO: load only in weather routing... -->
+    <link rel='stylesheet' href='styles/weather-icons.css'> <!-- TODO: load only in weather routing... -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans"> <!-- TODO: download locally (?...) -->
     <!-- endbuild -->
   </head>
   <body ng-app="angNewsApp">
@@ -77,6 +79,8 @@
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/weather.js"></script>
         <script src="scripts/filters/url.js"></script>
+        <script src="scripts/filters/capitalize.js"></script>
+        <script src="scripts/filters/celsius.js"></script>
         <script src="scripts/directives/checkusername.js"></script>
         <script src="scripts/directives/formautofillfix.js"></script>
         <!-- endbuild -->

@@ -3,45 +3,33 @@
 app.controller('WeatherCtrl', [
   '$scope',
   'WeatherService',
-  function ($scope, /*$window, geolocation, */weather) {
- 
+  function ($scope, weather) {
     $scope.position = null;
     $scope.weather = null;
     $scope.forecast = null;
-    $scope.location = 'Portovenere,it';
- 
+    $scope.location = 'Portovenere';
 /*
-  geolocation().then(function(position) {
-    $scope.position = position;
-  });
-
-  $scope.$watch('position', function(position) {
-    if (!position) return;
- 
-    weather.current.byPosition(position.coords.latitude, position.coords.longitude).then(function(data) {
-      $scope.weather = data;
-    });
- 
-    weather.forecast.byPosition(position.coords.latitude, position.coords.longitude).then(function(data) {
-      $scope.forecast = data;
-    });
-  });
+    $scope.weather = {};
+    $scope.weather.main = {};
+    $scope.weather.main.temp = 272.15;
 */
 
     $scope.updateWeather = function() {
       weather.current.byCity($scope.location).then(function (data) {
+        console.info('weather:');
+        console.info(data);
         $scope.weather = data;
       });
     
       weather.forecast.byCity($scope.location).then(function (data) {
-        console.log(data);
+        console.info('forecast:');
+        console.info(data);
         $scope.forecast = data;
       });
     };
 
     console.info('Updating weather...');
     $scope.updateWeather();
-
   }
 
 ]);
