@@ -1,58 +1,40 @@
 <div class="container-fixed">
   <table class="weather-table">
     <tr>
-      <td class="weather-td weather-title" colspan="4">{{ location }} - Weather conditions</td>
+      <td class="weather-td weather-title" colspan="4"><span ng-bind-html='location'></span> - Weather conditions</td>
     </tr>
     <tr>
       <td class="weather-td weather-subtitle weather-subtitle-left" colspan="2">Current weather</td>
       <td class="weather-td weather-subtitle weather-subtitle-right" colspan="2">Forecast</td>
     </tr>
     <tr>
-      <td class="weather-td weather-temperature" rowspan="3"><span ng-bind-html='weather.main.temp | celsius'></span></td>
-      <td class="weather-td weather-icon" rowspan="6" ><i class="wi-day-lightning"></i></td>
-      <td class="weather-td weather-forecast-day">Lun</td>
-      <td class="weather-td weather-forecast-day weather-forecast-day-right">Mar</td>
+      <td class="weather-td weather-temperature" rowspan="3"><span ng-bind-html="weather.temperature"></span></td>
+      <td class="weather-td weather-icon" rowspan="6" ><i ng-class="weather.icon"></i></td>
+      <td class="weather-td weather-forecast-day"><span ng-bind="weather.forecast1.dayname"></span></td>
+      <td class="weather-td weather-forecast-day weather-forecast-day-right"><span ng-bind="weather.forecast2.dayname"></span></td>
     </tr>
     <tr>
-      <td class="weather-td weather-forecast-temperature">15&deg;C / 29&deg;C</td>
-      <td class="weather-td weather-forecast-temperature weather-forecast-temperature-right">17&deg;C / 28&deg;C</td>
+      <td class="weather-td weather-forecast-temperature"><span ng-bind-html="weather.forecast1.temperature"</span></td>
+      <td class="weather-td weather-forecast-temperature weather-forecast-temperature-right"><span ng-bind-html="weather.forecast2.temperature"</span></td>
     </tr>
     <tr>
-      <td class="weather-td weather-forecast-conditions">Chance of storm</td>
-      <td class="weather-td weather-forecast-conditions weather-forecast-conditions-right">Mostly sunny</td>
+      <td class="weather-td weather-forecast-conditions"><span ng-bind-html="weather.forecast1.description"</span></td>
+      <td class="weather-td weather-forecast-conditions weather-forecast-conditions-right"><span ng-bind-html="weather.forecast2.description"</span></td>
     </tr>
     <tr>
-      <td class="weather-td weather-conditions"><span ng-bind-html='weather.weather[0].description | capitalize'></span></td>
-      <td class="weather-td weather-forecast-day">Mer</td>
-      <td class="weather-td weather-forecast-day weather-forecast-day-right">Gio</td>
+      <td class="weather-td weather-conditions"><span ng-bind-html='weather.description | capitalize'></span></td>
+      <td class="weather-td weather-forecast-day"><span ng-bind="weather.forecast3.dayname"></span></td>
+      <td class="weather-td weather-forecast-day weather-forecast-day-right"><span ng-bind="weather.forecast4.dayname"></span></td>
     </tr>
     <tr>
-      <td class="weather-td weather-humidity">Humidity: <span ng-bind='weather.main.humidity'></span>%</td>
-      <td class="weather-td weather-forecast-temperature">16&deg;C / 30&deg;C</td>
-      <td class="weather-td weather-forecast-temperature weather-forecast-temperature-right">14&deg;C / 29&deg;C</td>
+      <td class="weather-td weather-humidity"><span ng-bind-html='weather.humidity'></span></td>
+      <td class="weather-td weather-forecast-temperature"><span ng-bind-html="weather.forecast3.temperature"</span></td>
+      <td class="weather-td weather-forecast-temperature weather-forecast-temperature-right"><span ng-bind-html="weather.forecast4.temperature"</span></td>
     </tr>
     <tr>
-      <td class="weather-td weather-wind">Wind: <span ng-bind='weather.wind.deg'></span> <span ng-bind='weather.wind.speed'></span>m/s</td>
-      <td class="weather-td weather-forecast-conditions">Thunderstorm</td>
-      <td class="weather-td weather-forecast-conditions weather-forecast-conditions-right">Rain</td>
+      <td class="weather-td weather-wind"><span ng-bind='weather.wind'></span></td>
+      <td class="weather-td weather-forecast-conditions"><span ng-bind-html="weather.forecast3.description"</span></td>
+      <td class="weather-td weather-forecast-conditions weather-forecast-conditions-right"><span ng-bind-html="weather.forecast4.description"</span></td>
     </tr>
   </table>
-</div> <!-- /container -->
-
-<br><hr>
-Current weather: {{ weather.weather[0] | json }}
-<br><hr>
-Forecast weather: {{ forecast.list[0].weather[0] | json }}
-<br><hr>
-
-<!--
-Current weather is: {{ weather.weather[0].description }}
-Forecast weather is:
-{{ forecast.list[0].weather[0].description }},
-{{ forecast.list[1].weather[0].description }},
-{{ forecast.list[2].weather[0].description }},
-{{ forecast.list[3].weather[0].description }},
-{{ forecast.list[4].weather[0].description }},
-{{ forecast.list[5].weather[0].description }},
-{{ forecast.list[6].weather[0].description }},
--->  
+</div>

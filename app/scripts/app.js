@@ -8,7 +8,11 @@ var app = angular.module('angNewsApp', [
   'ngRoute',
   'firebase'
 ])
-.constant('FIREBASE_URL', 'https://blinding-fire-5694.firebaseio.com/');
+.constant('FIREBASE_URL', 'https://blinding-fire-5694.firebaseio.com/')
+.constant('APP_NAME', 'ang-news')
+.constant('APP_VERSION', '0.1')
+//.constant('LOCATION_NAME', 'Portovenere')
+;
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
@@ -38,4 +42,19 @@ app.config(function ($routeProvider) {
     .otherwise({
         redirectTo: '/'
       });
+
+  /*
+  var language = function() { // TODO: use Pascal Precht i18n module...
+    var lang, androidLang;
+    // for earlier version of Android (2.3.x)
+    if (navigator && navigator.userAgent && (androidLang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i))) {
+      lang = androidLang[1];
+    } else {
+      // for iOS and Android 4.x
+      lang = navigator.userLanguage || navigator.language;
+    }
+    return lang;
+  };
+  */
+
 });

@@ -34,39 +34,39 @@ app.factory('WeatherService', ['$q', '$http', function($q, $http) {
   return {
     current: {
       byPosition: function(lat, lng) {
-        var path = '/weather?lat='+lat+'&lon='+lng;
-        return request(path);
+        return request('/weather?lat='+lat+'&lon='+lng);
       },
       byCity: function(cityName) {
-        var path = '/weather?q='+cityName;
-        return request(path);
+        return request('/weather?q='+cityName);
       },
       byCityId: function(cityId) {
-        var path = '/weather?id='+cityId;
-        return request(path);
+        return request('/weather?id='+cityId);
       }
     },
     forecast: {
-      byPosition: function(lat, lng, days, units) {
-        var u = units || 'metric'; // internal, metric, or imperial
+      byPosition: function(lat, lng, days/*, units*/) {
+        /*
         var d = normalizeDays(days);
- 
-        var path = '/forecast/daily?lat='+lat+'&lon='+lng+'&cnt='+d+'&mode=json'+'&units='+u;
+        var path = '/forecast/daily?lat='+lat+'&lon='+lng+'&cnt='+d+'&mode=json'; //+'&units='+u;
         return request(path);
+        */
+        return request('/forecast/daily?lat='+lat+'&lon='+lng+'&cnt='+normalizeDays(days)+'&mode=json');
       },
-      byCity: function(cityName, days, units) {
-        var u = units || 'metric'; // internal, metric, or imperial
+      byCity: function(cityName, days/*, units*/) {
+        /*
         var d = normalizeDays(days);
- 
-        var path = '/forecast/daily?q='+cityName+'&cnt='+d+'&mode=json'+'&units='+u;
+        var path = '/forecast/daily?q='+cityName+'&cnt='+d+'&mode=json'; //+'&units='+u;
         return request(path);
+        */
+        return request('/forecast/daily?q='+cityName+'&cnt='+normalizeDays(days)+'&mode=json');
       },
-      byCityId: function(cityId, days, units) {
-        var u = units || 'metric'; // internal, metric, or imperial
+      byCityId: function(cityId, days/*, units*/) {
+        /*
         var d = normalizeDays(days);
- 
-        var path = '/forecast/daily?id='+cityId+'&cnt='+d+'&mode=json'+'&units='+u;
+        var path = '/forecast/daily?id='+cityId+'&cnt='+d+'&mode=json'; //+'&units='+u;
         return request(path);
+        */
+        return request('/forecast/daily?id='+cityId+'&cnt='+normalizeDays(days)+'&mode=json');
       }
     }
   };
