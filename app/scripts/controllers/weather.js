@@ -19,6 +19,7 @@ app.controller('WeatherCtrl', [
     dayNames.en_US =
       [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
     $scope.weather = {};
+    $scope.title = $scope.location + ' - Weather conditions';
 
     $scope.updateWeather = function() {
       weather.current.byCity($scope.location).then(function (data) {
