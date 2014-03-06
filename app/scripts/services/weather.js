@@ -1,74 +1,46 @@
 'use strict';
 
-app.factory('WeatherService', ['$q', '$http', function($q, $http) {
-  var SERVICE_ENDPOINT = 'http://api.openweathermap.org/data/2.5';
-  var JSON_P_SUFFIX = '&callback=JSON_CALLBACK';
- 
-  var request = function(path) {
-    var deferred = $q.defer();
- 
-    $http.jsonp(SERVICE_ENDPOINT + path + JSON_P_SUFFIX).
-      success(function(data /*, status, headers, config*/) {
-        deferred.resolve(data);
-      }).
-      error(function(data /*, status, headers, config*/) {
-        deferred.reject(data);
+app.service('YahooWeatherService', function YahooWeatherService($rootScope, $http, $log) {
+  var self = this;
+  
+  // Yahoo WOEID Geo Lookup API vars
+  var GEOCODE_ENDPOINT = 'http://where.yahooapis.com/geocode';
+  var YAHOO_GEO_APP_ID = 'v6wFWp30';
+  var APP_ID = '&appid=' + YAHOO_GEO_APP_ID;
+  var LOCATION = '?location=';
+  var FLAGS = '&flags=J&gflags=R';
+  var UNITS = 'c';
+
+  //http://query.yahooapis.com/v1/public/yql?q=select item from weather.forecast where location="48907"&format=json
+
+  // Yahoo Weather API vars
+  var FORECAST_ENDPOINT = 'http://query.yahooapis.com/v1/public/yql?q=';
+  var FORECAST_YQL_OPEN = 'select * from weather.forecast where woeid=\'';
+  var FORECAST_YQL_CLOSE = '\' and u="'+UNITS+'"&format=json&u=';
+
+  self.getWOEID = function(position, successCallback, failureCallback) {
+    var endPoint = GEOCODE_ENDPOINT + LOCATION + position.latitude + ',' + position.longitude + FLAGS + APP_ID;
+    $log.info('End point = ' + endPoint);
+
+    $http.get(endPoint)
+      .success(function(data/*, status, headers, config*/) {
+        successCallback(data);
+      })
+      .error(function(/*data, */status/*, headers, config*/) {
+        failureCallback(status);
       });
- 
-    return deferred.promise;
-  };
- 
-  var normalizeDays = function(days) {
-    var d = days;
- 
-    if (days === undefined || days === null || parseInt(days) < 1) {
-      d = 7;
-    }
-    if (d > 14) { // max 14 days
-      d = 14;
-    }
- 
-    return d;
-  };
- 
-  return {
-    current: {
-      byPosition: function(lat, lng) {
-        return request('/weather?lat='+lat+'&lon='+lng);
-      },
-      byCity: function(cityName) {
-        return request('/weather?q='+cityName);
-      },
-      byCityId: function(cityId) {
-        return request('/weather?id='+cityId);
-      }
-    },
-    forecast: {
-      byPosition: function(lat, lng, days/*, units*/) {
-        /*
-        var d = normalizeDays(days);
-        var path = '/forecast/daily?lat='+lat+'&lon='+lng+'&cnt='+d+'&mode=json'; //+'&units='+u;
-        return request(path);
-        */
-        return request('/forecast/daily?lat='+lat+'&lon='+lng+'&cnt='+normalizeDays(days)+'&mode=json');
-      },
-      byCity: function(cityName, days/*, units*/) {
-        /*
-        var d = normalizeDays(days);
-        var path = '/forecast/daily?q='+cityName+'&cnt='+d+'&mode=json'; //+'&units='+u;
-        return request(path);
-        */
-        return request('/forecast/daily?q='+cityName+'&cnt='+normalizeDays(days)+'&mode=json');
-      },
-      byCityId: function(cityId, days/*, units*/) {
-        /*
-        var d = normalizeDays(days);
-        var path = '/forecast/daily?id='+cityId+'&cnt='+d+'&mode=json'; //+'&units='+u;
-        return request(path);
-        */
-        return request('/forecast/daily?id='+cityId+'&cnt='+normalizeDays(days)+'&mode=json');
-      }
-    }
   };
 
-}]);
+  self.getWeatherForWOEID = function(woeid, units, successCallback, failureCallback) {
+    var endPoint = FORECAST_ENDPOINT + FORECAST_YQL_OPEN + woeid + FORECAST_YQL_CLOSE;
+    $log.info('End point = ' + endPoint);
+    $http.get(endPoint)
+      .success(function(data/*, status, headers, config*/) {
+        successCallback(data);
+      })
+      .error(function(/*data, */status/*, headers, config*/) {
+        failureCallback(status);
+      });
+  };
+
+});

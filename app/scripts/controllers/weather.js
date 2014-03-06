@@ -2,25 +2,62 @@
 
 app.controller('WeatherCtrl', [
   '$scope',
-  'WeatherService',
-  function ($scope, weather) {
+  '$rootScope',
+  '$log',
+  //'WeatherService',
+  'YahooWeatherService',
+  function ($scope, $rootScope, $log, YahooWeatherService) {
     $scope.position = null;
     $scope.weather = null;
     $scope.forecast = null;
     $scope.location = 'Portovenere'; // TODO: define in config...
+    $scope.WOEID = '721122'; // TODO: getYahooWOEIDFromLocation()...
+    $scope.units = 'C'; // TODO: define in config...
 
-    const KELVIN_ABSOLUTE_ZERO = 272.15;
-    const language = 'it_IT'; // TODO: ...
-    const dayNames = [];
-    dayNames.it_IT =
-      [ 'Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab' ];
-    dayNames.en_EN =
-      [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
-    dayNames.en_US =
-      [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
-    $scope.weather = {};
-    $scope.title = $scope.location + ' - Weather conditions';
+    // TODO: check Chrome: Version 33.0.1750.146 m doesn't allow "const" in strict mode...
+//    var/*const*/ KELVIN_ABSOLUTE_ZERO = 272.15;
+//    var/*const*/ language = 'it_IT'; // TODO: ...
+//    var/*const*/ dayNames = [];
+//    dayNames.it_IT =
+//      [ 'Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab' ];
+//    dayNames.en_EN =
+//      [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
+//    dayNames.en_US =
+//      [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
+//    $scope.weather = {};
+//    $scope.title = $scope.location + ' - Weather conditions';
 
+    $scope.getWeatherForWOEID = function() {
+      $log.info(YahooWeatherService);
+      YahooWeatherService.getWeatherForWOEID($scope.WOEID, $scope.units,
+        function(data) {
+          $log.info('Success:'); $log.info(data);
+          $scope.currentWeatherForWoeid = data;
+          var weather = $scope.currentWeatherForWoeid.query.results.channel.item.forecast;
+          $scope.weather = {};
+          $scope.weather.dayname = weather[0].day;
+          $scope.weather.temperature = weather[0].high + '&deg;' + $scope.units;
+          $scope.weather.icon = getWeatherIcon(weather[0].code);
+          $scope.weather.description = weather[0].text;
+          $scope.weather.humidity = 'Humidity:' + ' ' + '???' + '%';
+          $scope.weather.wind = 'Wind:' + ' ' + '???' /*windDegSpeed2DirSpeed(data.wind.deg, data.wind.speed, windUnit)*/;
+
+          $scope.weather.forecast1 = {};
+          $scope.weather.forecast1.dayname = weather[1].day;
+          $scope.weather.forecast1.temperature = weather[1].low + '&deg;' + $scope.units + ' / ' + weather[1].high + '&deg;' + $scope.units;
+          $scope.weather.forecast1.icon = getWeatherIcon(weather[1].code);
+          $scope.weather.forecast1.description = weather[0].text;
+          $scope.weather.forecast1.humidity = 'Humidity:' + ' ' + '???' + '%';
+          $scope.weather.forecast1.wind = 'Wind:' + ' ' + '???' /*windDegSpeed2DirSpeed(data.wind.deg, data.wind.speed, windUnit)*/;
+        },
+        function(status) {
+          $scope.currentWeatherForWoeid = null;
+          $log.info('Failure:'); $log.info(status);
+        }
+      );
+    };
+
+/*
     $scope.updateWeather = function() {
       weather.current.byCity($scope.location).then(function (data) {
         console.info('weather:');
@@ -79,6 +116,7 @@ app.controller('WeatherCtrl', [
         $scope.weather.forecast4.description = data.list[offsetDays].weather[0].description;
       });
     };
+*/
 
     function getPreferredTemperatureUnit() { // TODO: use Pascal Precht i18n module...
       return (language === 'en_US') ? 'F' : 'C';
@@ -211,7 +249,8 @@ app.controller('WeatherCtrl', [
       return directions[parseInt(((degrees + 11.25) / 22.5) % 16)] + ' ' + speed.toFixed(1) + ' ' + unit;
     }
 
-    $scope.updateWeather(); // update weather
+    //$scope.updateWeather(); // update weather
+    $scope.getWeatherForWOEID(); // update weather
   }
 
 ]);
