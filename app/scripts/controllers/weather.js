@@ -33,22 +33,46 @@ app.controller('WeatherCtrl', [
         function(data) {
           $log.info('Success:'); $log.info(data);
           $scope.currentWeatherForWoeid = data;
-          var weather = $scope.currentWeatherForWoeid.query.results.channel.item.forecast;
+          var channel = $scope.currentWeatherForWoeid.query.results.channel;
+
+
           $scope.weather = {};
-          $scope.weather.dayname = weather[0].day;
-          $scope.weather.temperature = weather[0].high + '&deg;' + $scope.units;
-          $scope.weather.icon = getWeatherIcon(weather[0].code);
-          $scope.weather.description = weather[0].text;
-          $scope.weather.humidity = 'Humidity:' + ' ' + '???' + '%';
-          $scope.weather.wind = 'Wind:' + ' ' + '???' /*windDegSpeed2DirSpeed(data.wind.deg, data.wind.speed, windUnit)*/;
+          var offsetDays = 0;
+          $scope.weather.dayname = channel.item.forecast[offsetDays].day;
+          $scope.weather.temperature = channel.item.forecast[offsetDays].high + '&deg;' + $scope.units;
+          $scope.weather.icon = getWeatherIcon(channel.item.forecast[offsetDays].code);
+          $scope.weather.description = channel.item.forecast[offsetDays].text;
+          $scope.weather.humidity = 'Humidity:' + ' ' + channel.atmosphere.humidity + '%';
+          $scope.weather.wind = 'Wind:' + ' ' + windDegSpeed2DirSpeed(channel.wind.direction, channel.wind.speed, channel.units.speed);
 
           $scope.weather.forecast1 = {};
-          $scope.weather.forecast1.dayname = weather[1].day;
-          $scope.weather.forecast1.temperature = weather[1].low + '&deg;' + $scope.units + ' / ' + weather[1].high + '&deg;' + $scope.units;
-          $scope.weather.forecast1.icon = getWeatherIcon(weather[1].code);
-          $scope.weather.forecast1.description = weather[0].text;
-          $scope.weather.forecast1.humidity = 'Humidity:' + ' ' + '???' + '%';
-          $scope.weather.forecast1.wind = 'Wind:' + ' ' + '???' /*windDegSpeed2DirSpeed(data.wind.deg, data.wind.speed, windUnit)*/;
+          offsetDays++;
+          $scope.weather.forecast1.dayname = channel.item.forecast[offsetDays].day;
+          $scope.weather.forecast1.temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
+          $scope.weather.forecast1.icon = getWeatherIcon(channel.item.forecast[offsetDays].code);
+          $scope.weather.forecast1.description = channel.item.forecast[offsetDays].text;
+
+          $scope.weather.forecast2 = {};
+          offsetDays++;
+          $scope.weather.forecast2.dayname = channel.item.forecast[offsetDays].day;
+          $scope.weather.forecast2.temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
+          $scope.weather.forecast2.icon = getWeatherIcon(channel.item.forecast[offsetDays].code);
+          $scope.weather.forecast2.description = channel.item.forecast[offsetDays].text;
+
+          $scope.weather.forecast3 = {};
+          offsetDays++;
+          $scope.weather.forecast3.dayname = channel.item.forecast[offsetDays].day;
+          $scope.weather.forecast3.temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
+          $scope.weather.forecast3.icon = getWeatherIcon(channel.item.forecast[offsetDays].code);
+          $scope.weather.forecast3.description = channel.item.forecast[offsetDays].text;
+
+          $scope.weather.forecast4 = {};
+          offsetDays++;
+          $scope.weather.forecast4.dayname = channel.item.forecast[offsetDays].day;
+          $scope.weather.forecast4.temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
+          $scope.weather.forecast4.icon = getWeatherIcon(channel.item.forecast[offsetDays].code);
+          $scope.weather.forecast4.description = channel.item.forecast[offsetDays].text;
+
         },
         function(status) {
           $scope.currentWeatherForWoeid = null;
@@ -241,12 +265,13 @@ app.controller('WeatherCtrl', [
     }
 
     function windDegSpeed2DirSpeed(degrees, speed, unit) {
+console.log('function windDegSpeed2DirSpeed('+degrees+', '+speed+', '+unit+')');
       var directions = [
         'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
         'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
       ];
 
-      return directions[parseInt(((degrees + 11.25) / 22.5) % 16)] + ' ' + speed.toFixed(1) + ' ' + unit;
+      return directions[parseInt(((degrees + 11.25) / 22.5) % 16)] + ' ' + parseFloat(speed).toFixed(1) + ' ' + unit;
     }
 
     //$scope.updateWeather(); // update weather
