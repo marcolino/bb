@@ -13,7 +13,7 @@ var app = angular.module('angNewsApp', [
 .constant('APP_VERSION', '0.1')
 //.constant('LOCATION_NAME', 'Portovenere')
 ;
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/posts.html',
@@ -42,6 +42,23 @@ app.config(function ($routeProvider) {
     .otherwise({
         redirectTo: '/'
       });
+
+  // push a responseInterceptor to httpProvider to simulate network slow-downs...
+  $httpProvider.responseInterceptors.push(function ($q, $timeout) {
+    var delay = 2;
+
+    return function (promise) {
+      var defer = $q.defer();
+
+      $timeout(function () {
+        promise.then(function (data) {
+          defer.resolve(data);
+        });
+      }, delay * 1000);
+
+      return defer.promise;
+    };
+  });
 
   /*
   var language = function() { // TODO: use Pascal Precht i18n module...
