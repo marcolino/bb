@@ -13,7 +13,7 @@ var app = angular.module('angNewsApp', [
 .constant('APP_VERSION', '0.1')
 //.constant('LOCATION_NAME', 'Portovenere')
 ;
-app.config(function ($routeProvider, $httpProvider) {
+app.config(function ($routeProvider/*, $httpProvider*/) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/posts.html',
@@ -39,10 +39,15 @@ app.config(function ($routeProvider, $httpProvider) {
         templateUrl: 'views/weather.html',
         controller: 'WeatherCtrl'
       })
+    .when('/reserve', {
+        templateUrl: 'views/reserve.html',
+        controller: 'ReservationCtrl'
+      })
     .otherwise({
         redirectTo: '/'
       });
 
+  /*
   // push a responseInterceptor to httpProvider to simulate network slow-downs...
   $httpProvider.responseInterceptors.push(function ($q, $timeout) {
     var delay = 2;
@@ -59,6 +64,7 @@ app.config(function ($routeProvider, $httpProvider) {
       return defer.promise;
     };
   });
+  */
 
   /*
   var language = function() { // TODO: use Pascal Precht i18n module...

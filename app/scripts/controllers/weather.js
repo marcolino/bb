@@ -13,7 +13,7 @@ app.controller('WeatherCtrl', [
     $scope.location = 'Portovenere'; // TODO: define in config...
     $scope.WOEID = '721122'; // got from http://woeid.rosselliot.co.nz
     $scope.units = 'c'; // TODO: define in config...
-    $scope.title = $scope.location + ' - Weather conditions';
+    $scope.title = $scope.location + ' - Weather';
     $scope.subtitleLeft = 'Current weather';
     $scope.subtitleRight = 'Forecast';
 
@@ -67,7 +67,7 @@ app.controller('WeatherCtrl', [
         'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
         'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
       ];
-
+      degrees = parseInt(degrees);
       return directions[parseInt(((degrees + 11.25) / 22.5) % 16)] + ' ' + parseFloat(speed).toFixed(1) + ' ' + unit;
     }
 

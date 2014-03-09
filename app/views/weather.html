@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <td class="weather-td weather-temperature" rowspan="3"><span ng-bind-html="weather.forecast[0].temperature"></span></td>
-      <td class="weather-td weather-icon" rowspan="6" ><img ng-src='{{ weather.forecast[0].icon }}' height="150"/></td>
+      <td class="weather-td weather-icon" rowspan="6"><img ng-src='{{ weather.forecast[0].icon }}' class="weather-icon-img" /></span></td>
       <td class="weather-td weather-forecast-day"><span ng-bind="weather.forecast[1].dayname">&nbsp;</span></td>
       <td class="weather-td weather-forecast-day weather-forecast-day-right"><span ng-bind="weather.forecast[2].dayname">&nbsp;</span></td>
     </tr>

@@ -1,0 +1,283 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"$r",
+				"$routeProvider	AngularJS"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 117.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: pa",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/opt/angularjs/ang-news/app/index.html",
+		"/opt/angularjs/ang-news/app/styles/weather.css",
+		"/opt/angularjs/ang-news/app/scripts/controllers/weather.js",
+		"/opt/angularjs/ang-news/app/views/weather.html",
+		"/opt/angularjs/ang-news/app/scripts/services/weather.js",
+		"/opt/angularjs/ang-news/app/scripts/app.js",
+		"/opt/angularjs/ang-news/app/bower_components/angularfire/bower.json",
+		"/home/marco/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/marco/.config/sublime-text-3/Packages/AngularJS/AngularJS-completions.sublime-settings",
+		"/home/marco/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
+		"/home/marco/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/opt/angularjs/ang-news/app/bower_components/jquery/test/data/dimensions/documentSmall.html",
+		"/opt/angularjs/ang-news/app/bower_components/jquery/src/intro.js",
+		"/opt/angularjs/ang-news/app/scripts/controllers/posts.js",
+		"/opt/angularjs/ang-news/app/scripts/services/post.js",
+		"/opt/angularjs/ang-news/app/scripts/controllers/nav.js",
+		"/opt/angularjs/ang-news/app/styles/main.css",
+		"/opt/angularjs/ang-news/app/views/nav.html",
+		"/opt/angularjs/ang-news/app/views/posts.html",
+		"/opt/angularjs/ang-news/app/scripts/controllers/postview.js",
+		"/opt/angularjs/ang-news/app/views/showpost.html",
+		"/opt/angularjs/ang-news/app/scripts/controllers/profile.js",
+		"/opt/angularjs/ang-news/app/views/profile.html",
+		"/opt/angularjs/ang-news/app/scripts/services/profile.js",
+		"/home/marco/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/opt/angularjs/ang-news/app/scripts/filters/url.js",
+		"/opt/angularjs/ang-news/Gruntfile.js",
+		"/opt/angularjs/ang-news/bower.json",
+		"/opt/angularjs/ang-news/karma.conf.js",
+		"/var/www/sito/web/js/resistenze.js",
+		"/var/www/sito/web/pdf/html2pdf.php",
+		"/home/marco/Desktop/AngularJS.pdf",
+		"/home/marco/Desktop/AngularJS2.pdf",
+		"/var/www/sito/web/epub/html2epub.php",
+		"/var/www/resistenze.org/sito/web/js/resistenze.js",
+		"/var/www/resistenze.org/pemcea19-013862.html",
+		"/var/www/resistenze.org/epub/html2epub.php",
+		"/var/www/resistenze.org/css/styles.css",
+		"/var/www/resistenze.org/pdf/html2pdf.php",
+		"/var/www/resistenze.org/js/resistenze.js",
+		"/home/marco/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/var/www/resistenze.org/epub/cover.php",
+		"/var/www/resistenze.org/epub/ajax.php",
+		"/var/www/resistenze.org/epub/html2epub",
+		"/var/www/resistenze.org/dompdf/dompdf_config.custom.inc.php",
+		"/var/www/resistenze.org/pdf/dompdf/include/cpdf_adapter.cls.php",
+		"/var/www/resistenze.org/html2pdf.php",
+		"/var/www/epub/html2epub",
+		"/var/log/apache2/error.log",
+		"/var/www/resistenze.org/simple_html_dom.php",
+		"/opt/angularjs/setup.sh",
+		"/opt/angularjs/test/karma.conf.js",
+		"/opt/angularjs/test/Gruntfile.js",
+		"/var/www/faidate.0/index.html",
+		"/home/marco/ievms",
+		"/tmp/1-index.html",
+		"/opt/personal/ascreensaver/ascreensaver",
+		"/opt/personal/ascreensaver/ascreensaver.ok",
+		"/opt/personal/ascreensaver/ascreensaver.sh",
+		"/opt/personal/ascreensaver/ss-movie.sh"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"container-f",
+			"forecast\\[\\d\\]",
+			"forecast1",
+			"forecast",
+			"forecast1",
+			"git-add .",
+			"git add .",
+			"git add -A",
+			"git",
+			"script",
+			"www.it-ebooks.info",
+			"(www.it-ebooks.info)",
+			"www.it-ebooks.info",
+			"it-ebooks.info",
+			"$cachedir",
+			"$epub",
+			"$url",
+			"()",
+			"handlerFunctionA",
+			"$html",
+			"$cover",
+			"_add_page_text",
+			"$x",
+			"3mila",
+			"3mile",
+			"cofee",
+			"serverLo"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"forecast[offsetDays]",
+			"forecast4",
+			"forecast3",
+			"forecast2",
+			"                  ",
+			"(_)",
+			"( )",
+			"",
+			"$cachedirepub",
+			"$outputname",
+			"$filepath",
+			"3 mila"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 112.0
+	},
+	"project": "ang-news.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
