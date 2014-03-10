@@ -1,82 +1,263 @@
 <div class="well">
-<form name="form" novalidate ng-submit="sendForm()" ng-init="howmany={}; nameMinLen = 3; nameMaxLen = 48; howmanyMin = 1; howmanyMax = 2; ">
+  <form name="reservation_form" class="reservation-form" novalidate ng-controller="ReservationCtrl"
+    ng-submit="sendForm()" ng-reset="resetForm()"
+    ng-init="nameMinLen = 3; nameMaxLen = 48; howmany = {}; howmany.min = 1; howmanyMax = 2; ">
+    <fieldset><legend>Reservation</legend>
 
-  <fieldset>
-
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Your name</label>
-      <input
-        name="name" 
-        type="text"
-        placeholder="Name and Surname"
-        ng-model="signup.name"
-        ng-minlength=3
-        ng-maxlength=48
-        ng-focus
-        required
-      />
-      <span class="error" ng-show="form.name.$dirty && form.name.$invalid && !form.name.$focused">
-        <small class="error" ng-show="form.name.$error.required">Your name is required</small>
-        <small class="error" ng-show="form.name.$error.minlength">Your name is required to be at least {{nameMinLen}} characters</small>
-        <small class="error" ng-show="form.name.$error.maxlength">Your name cannot be longer than 48 characters</small>
-      </span>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-user" title="Your name and surname"></span></span>
+          <input
+            name="name" 
+            type="text"
+            class="form-control"
+            ng-class="{ field_error: reservation_form.name.$dirty && reservation_form.name.$invalid && !reservation_form.name.$focused }"
+            placeholder="Your name and surname"
+            ng-model="reservation.name"
+            ng-minlength=3
+            ng-maxlength=48
+            ng-focus
+            required
+          >
+        </div>
+        <span class="error-container" ng-show="reservation_form.name.$dirty && reservation_form.name.$invalid && !reservation_form.name.$focused">
+          <small class="error" ng-show="reservation_form.name.$error.required">Your name is required</small>
+          <small class="error" ng-show="reservation_form.name.$error.minlength">Your name is required to be at least {{nameMinLen}} characters</small>
+          <small class="error" ng-show="reservation_form.name.$error.maxlength">Your name cannot be longer than 48 characters</small>
+        </span>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="large_12 columns">
-      <label name="email">How many persons</label>
-      <input
-        name="howmany"
-        type="number"
-        placeholder="How many persons you are"
-        ng-model="howmany"
-        min="{{howmanyMin}}"
-        max="{{howmanyMax}}"
-        ng-focus
-        required
-      />
-      <span class="error-container" ng-show="form.howmany.$dirty && form.howmany.$invalid && !form.howmany.$focused">
-        <small class="error" ng-show="form.howmany.$error.required">Number of persons is required</small>
-        <small class="error" ng-show="form.howmany.$error.min">Minimum number of persons is 1</small>
-        <small class="error" ng-show="form.howmany.$error.max">Maximum number of persons is 2</small>
-        <small class="error" ng-show="form.howmany.$error.invalid">That is not a valid number of persons. Please input a valid number of persons</small>
-      </span>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-user" style="margin:-3px;"></span><span class="glyphicon glyphicon-user" style="margin:-4px;"></span></span>
+          <input
+            name="howmany"
+            type="number"
+            class="form-control"
+            ng-class="{ field_error: reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused }"
+            placeholder="How many persons you are"
+            ng-model="reservation.howmany"
+            min="{{howmany.min}}"
+            max="{{howmanyMax}}"
+            ng-focus
+            required
+          />
+        </div>
+        <span class="error-container" ng-show="reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused">
+          <small class="error" ng-show="reservation_form.howmany.$error.required">Number of persons is required</small>
+          <small class="error" ng-show="reservation_form.howmany.$error.min">Minimum number of persons is 1</small>
+          <small class="error" ng-show="reservation_form.howmany.$error.max">Sorry, maximum number of persons is 2</small>
+          <small class="error" ng-show="reservation_form.howmany.$error.number">Please input a valid *number* of persons</small>
+          <small class="error" ng-show="reservation_form.howmany.$error.invalid">Please input a *valid* number of persons</small>
+        </span>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <label name="email">Your email</label>
-      <input
-        name="email"
-        type="email"
-        placeholder="Email Address"
-        ng-model="email"
-        ng-minlength=6
-        ng-maxlength=254
-        ng-focus
-      />
-      <span class="error-container" ng-show="form.email.$dirty && form.email.$invalid && !form.email.$focused">
-        <small class="error" ng-show="form.email.$error.required">Your email is required</small>
-        <small class="error" ng-show="form.email.$error.minlength">Your email is required to be at least 6 characters</small>
-        <small class="error" ng-show="form.email.$error.email">That is not a valid email. Please input a valid email</small>
-        <small class="error" ng-show="form.email.$error.maxlength">Your email cannot be longer than 254 characters</small>
-      </span>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+
+<!--
+          <input
+            name="date"
+            type="date"
+            class="form-control"
+            ng-class="{ field_error: reservation_form.date.$dirty && reservation_form.date.$invalid && !reservation_form.date.$focused }"
+            placeholder="When you arrive"
+            ng-model="reservation.date"
+            ng-model="dateString" 
+            ng-focus
+            required
+          />
+-->
+          <input
+            name="date"
+            type="text"
+            class="form-control"
+            datepicker-popup="{{format}}"
+            ng-model="dt"
+            is-open="opened"
+            min="minDate"
+            max="'2015-06-22'"
+            datepicker-options="dateOptions"
+            date-disabled="disabled(date, mode)"
+            ng-required="true"
+            close-text="Close"
+          />
+          <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+          </div>
+        </div>
+
+        </div>
+        <span class="error-container" ng-show="reservation_form.date.$dirty && reservation_form.date.$invalid && !reservation_form.date.$focused">
+          <small class="error" ng-show="reservation_form.date.$error.date">Please input a valid date of arrival</small>
+        </span>
+      </div>
     </div>
-  </div>
 
-  <br />
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            ng-class="{ field_error: reservation_form.email.$dirty && reservation_form.email.$invalid && !reservation_form.email.$focused }"
+            placeholder="Your email address"
+            ng-model="reservation.email"
+            ng-focus
+          />
+        </div>
+        <span class="error-container" ng-show="reservation_form.email.$dirty && reservation_form.email.$invalid && !reservation_form.email.$focused">
+          <small class="error" ng-show="reservation_form.email.$error.email">Please input a valid email address</small>
+        </span>
+      </div>
+    </div>
 
-  <div class="row">
-  <div class="btn-group">
-  <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Confirm</button>
-  <button type="cancel" class="btn">Cancel</button>
-  </div>
-  </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
+          <input
+            name="phone"
+            type="tel"
+            class="form-control"
+            ng-class="{ field_error: reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused }"
+            placeholder="Your phone number"
+            ng-model="reservation.phone"
+            ng-focus
+          />
+        </div>
+        <span class="error-container" ng-show="reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused">
+          <small class="error" ng-show="reservation_form.email.$error.tel">Please input a valid phone number</small>
+        </span>
+      </div>
+    </div>
 
-</fieldset>
 
-</form>
+
+<!--
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Amount">
+          <span class="input-group-addon">.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input type="text" class="form-control" placeholder="US Dollar">
+          <span class="input-group-addon">.00</span>
+        </div>
+      </div>
+    </div>
+-->
+    <br />
+
+    <div class="row">
+      <div class="col-xs-4">
+        <button type="submit" ng-disabled="reservation_form.$invalid" class="btn btn-primary">Confirm</button>
+        &nbsp;
+        <button type="reset" ng-click="resetForm()" class="btn">reset</button>
+      </div>
+    </div>
+
+  </fieldset>
+  </form>
 </div>
+
+<!--
+<div class="well">
+  <form name="form" novalidate class="reservation-form" ng-controller="ReservationCtrl" ng-submit="sendForm()" ng-init="howmany={}; nameMinLen = 3; nameMaxLen = 48; howmanyMin = 1; howmanyMax = 2; ">
+    <fieldset>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Your name</label>
+          <input
+            name="name" 
+            type="text"
+            placeholder="Name and Surname"
+            ng-model="signup.name"
+            ng-minlength=3
+            ng-maxlength=48
+            ng-focus
+            required
+          />
+          <span class="error" ng-show="form.name.$dirty && form.name.$invalid && !form.name.$focused">
+            <small class="error" ng-show="form.name.$error.required">Your name is required</small>
+            <small class="error" ng-show="form.name.$error.minlength">Your name is required to be at least {{nameMinLen}} characters</small>
+            <small class="error" ng-show="form.name.$error.maxlength">Your name cannot be longer than 48 characters</small>
+          </span>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="large_12 columns">
+          <label name="email">How many persons</label>
+          <input
+            name="howmany"
+            type="number"
+            placeholder="How many persons you are"
+            ng-model="howmany"
+            min="{{howmanyMin}}"
+            max="{{howmanyMax}}"
+            ng-focus
+            required
+          />
+          <span class="error-container" ng-show="form.howmany.$dirty && form.howmany.$invalid && !form.howmany.$focused">
+            <small class="error" ng-show="form.howmany.$error.required">Number of persons is required</small>
+            <small class="error" ng-show="form.howmany.$error.min">Minimum number of persons is 1</small>
+            <small class="error" ng-show="form.howmany.$error.max">Maximum number of persons is 2</small>
+            <small class="error" ng-show="form.howmany.$error.invalid">That is not a valid number of persons. Please input a valid number of persons</small>
+          </span>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="large-12 columns">
+          <label name="email">Your email</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            ng-model="email"
+            ng-minlength=6
+            ng-maxlength=254
+            ng-focus
+          />
+          <span class="error-container" ng-show="form.email.$dirty && form.email.$invalid && !form.email.$focused">
+            <small class="error" ng-show="form.email.$error.required">Your email is required</small>
+            <small class="error" ng-show="form.email.$error.minlength">Your email is required to be at least 6 characters</small>
+            <small class="error" ng-show="form.email.$error.email">That is not a valid email. Please input a valid email</small>
+            <small class="error" ng-show="form.email.$error.maxlength">Your email cannot be longer than 254 characters</small>
+          </span>
+        </div>
+      </div>
+    
+      <br />
+    
+      <div class="row">
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Confirm</button>
+        &nbsp;
+        <button type="reset" class="btn" >Cancel</button>
+      </div>
+    
+    </fieldset>
+  </form>
+</div>
+-->

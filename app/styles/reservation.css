@@ -1,6 +1,24 @@
+.reservation-form {
+  font-family: 'Open Sans', sans-serif !important;
+  color: red;
+}
+input, textarea, select {
+  min-width: 15.0em;
+  font-family: inherit;
+}
+input.field_error {
+  background: #ffe8e8;
+}
+.row {
+  margin-bottom: 1.5em;
+}
+/*
 input.ng-invalid {
-  border: 1px solid red;
 }
 input.ng-valid {
-  border: 1px solid green;
 }
+*/
+/*
+  opacity: 0.3;
+  filter:alpha(opacity=3);
+*/
