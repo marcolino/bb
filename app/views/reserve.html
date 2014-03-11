@@ -14,7 +14,7 @@
             class="form-control"
             ng-class="{ field_error: reservation_form.name.$dirty && reservation_form.name.$invalid && !reservation_form.name.$focused }"
             placeholder="Your name and surname"
-            ng-model="reservation.name"
+            ng-model="name"
             ng-minlength=3
             ng-maxlength=48
             ng-focus
@@ -39,7 +39,7 @@
             class="form-control"
             ng-class="{ field_error: reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused }"
             placeholder="How many persons you are"
-            ng-model="reservation.howmany"
+            ng-model="howmany"
             min="{{howmany.min}}"
             max="{{howmanyMax}}"
             ng-focus
@@ -56,52 +56,42 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller="DatepickerCtrl">
       <div class="col-xs-4">
         <div class="input-group">
           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-
-<!--
           <input
-            name="date"
-            type="date"
-            class="form-control"
-            ng-class="{ field_error: reservation_form.date.$dirty && reservation_form.date.$invalid && !reservation_form.date.$focused }"
-            placeholder="When you arrive"
-            ng-model="reservation.date"
-            ng-model="dateString" 
-            ng-focus
-            required
-          />
--->
-          <input
-            name="date"
+            name="when"
             type="text"
             class="form-control"
             datepicker-popup="{{format}}"
+            placeholder="The date of your arrival"
+            ng-model="dt"
+            min="minDate"
+            max="maxDate"
+            d_atepicker-options="dateOptions"
+            date-disabled="disabled(date, mode)"
+            ng-required="true"
+          />
+<!--
+          <input
+            name="when"
+            type="text"
+            class="form-control"
+            datepicker-popup="'yyyy-MM-dd'"
             ng-model="dt"
             is-open="opened"
-            min="minDate"
-            max="'2015-06-22'"
             datepicker-options="dateOptions"
             date-disabled="disabled(date, mode)"
             ng-required="true"
             close-text="Close"
           />
-          <span class="input-group-btn">
-            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
+-->
         </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
-          </div>
-        </div>
-
-        </div>
-        <span class="error-container" ng-show="reservation_form.date.$dirty && reservation_form.date.$invalid && !reservation_form.date.$focused">
-          <small class="error" ng-show="reservation_form.date.$error.date">Please input a valid date of arrival</small>
+        <span class="error-container" ng-show="reservation_form.when.$dirty && reservation_form.when.$invalid && !reservation_form.when.$focused">
+          <small class="error" ng-show="reservation_form.when.$error.required">Please choose the date of your arrival</small>
         </span>
+        <span>{{ dt | date:'yyyy-MM-dd' }}</span>
       </div>
     </div>
 
@@ -139,9 +129,11 @@
             ng-focus
           />
         </div>
+        <!-- TODO: phone validation...
         <span class="error-container" ng-show="reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused">
-          <small class="error" ng-show="reservation_form.email.$error.tel">Please input a valid phone number</small>
+          <small class="error" ng-show="reservation_form.phone.$error.invalid">Please input a valid phone number</small>
         </span>
+        -->
       </div>
     </div>
 

@@ -82,3 +82,13 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
   */
 
 });
+
+app.config(function (datepickerConfig) {
+  datepickerConfig.showWeeks = false;
+  datepickerConfig.startingDay = 1;
+});
+
+app.config(function (datepickerPopupConfig) {
+  datepickerPopupConfig.showButtonBar = false;
+});
+
