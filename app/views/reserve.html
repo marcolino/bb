@@ -1,255 +1,223 @@
 <div class="well">
   <form name="reservation_form" class="reservation-form" novalidate ng-controller="ReservationCtrl"
-    ng-submit="sendForm()" ng-reset="resetForm()"
-    ng-init="nameMinLen = 3; nameMaxLen = 48; howmany = {}; howmany.min = 1; howmanyMax = 2; ">
-    <fieldset><legend>Reservation</legend>
-
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-user" title="Your name and surname"></span></span>
-          <input
-            name="name" 
-            type="text"
-            class="form-control"
-            ng-class="{ field_error: reservation_form.name.$dirty && reservation_form.name.$invalid && !reservation_form.name.$focused }"
-            placeholder="Your name and surname"
-            ng-model="name"
-            ng-minlength=3
-            ng-maxlength=48
-            ng-focus
-            required
-          >
-        </div>
-        <span class="error-container" ng-show="reservation_form.name.$dirty && reservation_form.name.$invalid && !reservation_form.name.$focused">
-          <small class="error" ng-show="reservation_form.name.$error.required">Your name is required</small>
-          <small class="error" ng-show="reservation_form.name.$error.minlength">Your name is required to be at least {{nameMinLen}} characters</small>
-          <small class="error" ng-show="reservation_form.name.$error.maxlength">Your name cannot be longer than 48 characters</small>
-        </span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-user" style="margin:-3px;"></span><span class="glyphicon glyphicon-user" style="margin:-4px;"></span></span>
-          <input
-            name="howmany"
-            type="number"
-            class="form-control"
-            ng-class="{ field_error: reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused }"
-            placeholder="How many persons you are"
-            ng-model="howmany"
-            min="{{howmany.min}}"
-            max="{{howmanyMax}}"
-            ng-focus
-            required
-          />
-        </div>
-        <span class="error-container" ng-show="reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused">
-          <small class="error" ng-show="reservation_form.howmany.$error.required">Number of persons is required</small>
-          <small class="error" ng-show="reservation_form.howmany.$error.min">Minimum number of persons is 1</small>
-          <small class="error" ng-show="reservation_form.howmany.$error.max">Sorry, maximum number of persons is 2</small>
-          <small class="error" ng-show="reservation_form.howmany.$error.number">Please input a valid *number* of persons</small>
-          <small class="error" ng-show="reservation_form.howmany.$error.invalid">Please input a *valid* number of persons</small>
-        </span>
-      </div>
-    </div>
-
-    <div class="row" ng-controller="DatepickerCtrl">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-          <input
-            name="when"
-            type="text"
-            class="form-control"
-            datepicker-popup="{{format}}"
-            placeholder="The date of your arrival"
-            ng-model="dt"
-            min="minDate"
-            max="maxDate"
-            d_atepicker-options="dateOptions"
-            date-disabled="disabled(date, mode)"
-            ng-required="true"
-          />
-<!--
-          <input
-            name="when"
-            type="text"
-            class="form-control"
-            datepicker-popup="'yyyy-MM-dd'"
-            ng-model="dt"
-            is-open="opened"
-            datepicker-options="dateOptions"
-            date-disabled="disabled(date, mode)"
-            ng-required="true"
-            close-text="Close"
-          />
--->
-        </div>
-        <span class="error-container" ng-show="reservation_form.when.$dirty && reservation_form.when.$invalid && !reservation_form.when.$focused">
-          <small class="error" ng-show="reservation_form.when.$error.required">Please choose the date of your arrival</small>
-        </span>
-        <span>{{ dt | date:'yyyy-MM-dd' }}</span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-          <input
-            name="email"
-            type="email"
-            class="form-control"
-            ng-class="{ field_error: reservation_form.email.$dirty && reservation_form.email.$invalid && !reservation_form.email.$focused }"
-            placeholder="Your email address"
-            ng-model="reservation.email"
-            ng-focus
-          />
-        </div>
-        <span class="error-container" ng-show="reservation_form.email.$dirty && reservation_form.email.$invalid && !reservation_form.email.$focused">
-          <small class="error" ng-show="reservation_form.email.$error.email">Please input a valid email address</small>
-        </span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-          <input
-            name="phone"
-            type="tel"
-            class="form-control"
-            ng-class="{ field_error: reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused }"
-            placeholder="Your phone number"
-            ng-model="reservation.phone"
-            ng-focus
-          />
-        </div>
-        <!-- TODO: phone validation...
-        <span class="error-container" ng-show="reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused">
-          <small class="error" ng-show="reservation_form.phone.$error.invalid">Please input a valid phone number</small>
-        </span>
-        -->
-      </div>
-    </div>
-
-
-
-<!--
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Amount">
-          <span class="input-group-addon">.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input type="text" class="form-control" placeholder="US Dollar">
-          <span class="input-group-addon">.00</span>
-        </div>
-      </div>
-    </div>
--->
-    <br />
-
-    <div class="row">
-      <div class="col-xs-4">
-        <button type="submit" ng-disabled="reservation_form.$invalid" class="btn btn-primary">Confirm</button>
-        &nbsp;
-        <button type="reset" ng-click="resetForm()" class="btn">reset</button>
-      </div>
-    </div>
-
-  </fieldset>
-  </form>
-</div>
-
-<!--
-<div class="well">
-  <form name="form" novalidate class="reservation-form" ng-controller="ReservationCtrl" ng-submit="sendForm()" ng-init="howmany={}; nameMinLen = 3; nameMaxLen = 48; howmanyMin = 1; howmanyMax = 2; ">
+    ng-submit="submitForm()" ng-reset="resetForm()">
     <fieldset>
+
+      <legend>{{ legend }}</legend>
+  
       <div class="row">
-        <div class="large-12 columns">
-          <label>Your name</label>
-          <input
-            name="name" 
-            type="text"
-            placeholder="Name and Surname"
-            ng-model="signup.name"
-            ng-minlength=3
-            ng-maxlength=48
-            ng-focus
-            required
-          />
-          <span class="error" ng-show="form.name.$dirty && form.name.$invalid && !form.name.$focused">
-            <small class="error" ng-show="form.name.$error.required">Your name is required</small>
-            <small class="error" ng-show="form.name.$error.minlength">Your name is required to be at least {{nameMinLen}} characters</small>
-            <small class="error" ng-show="form.name.$error.maxlength">Your name cannot be longer than 48 characters</small>
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user" title="{{ title.namesurname }}"></span></span>
+            <input
+              name="namesurname" 
+              type="text"
+              class="form-control"
+              placeholder="{{ title.namesurname }}"
+              ng-model="name"
+              ng-minlength=3
+              ng-maxlength=48
+              ng-focus
+              ng-required="true"
+            >
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.namesurname.$dirty && reservation_form.namesurname.$invalid && !reservation_form.namesurname.$focused || (reservation_form.submitted && !reservation_form.namesurname.$dirty)">
+            <small class="validation-error" ng-show="reservation_form.namesurname.$error.required">Please insert your name and surname</small>
+            <small class="validation-error" ng-show="reservation_form.namesurname.$error.minlength">Name is required to be at least {{nameMinLen}} characters</small>
+            <small class="validation-error" ng-show="reservation_form.namesurname.$error.maxlength">Name cannot be longer than 48 characters</small>
           </span>
         </div>
+        <span ng-show="fields.namesurname.required">*</span>
       </div>
-    
+  
       <div class="row">
-        <div class="large_12 columns">
-          <label name="email">How many persons</label>
-          <input
-            name="howmany"
-            type="number"
-            placeholder="How many persons you are"
-            ng-model="howmany"
-            min="{{howmanyMin}}"
-            max="{{howmanyMax}}"
-            ng-focus
-            required
-          />
-          <span class="error-container" ng-show="form.howmany.$dirty && form.howmany.$invalid && !form.howmany.$focused">
-            <small class="error" ng-show="form.howmany.$error.required">Number of persons is required</small>
-            <small class="error" ng-show="form.howmany.$error.min">Minimum number of persons is 1</small>
-            <small class="error" ng-show="form.howmany.$error.max">Maximum number of persons is 2</small>
-            <small class="error" ng-show="form.howmany.$error.invalid">That is not a valid number of persons. Please input a valid number of persons</small>
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user" style="margin:-3px;"></span><span class="glyphicon glyphicon-user" style="margin:-4px;" title="{{ title.howmany }}" ></span></span>
+<!-- TODO: android browser renders badly number type fields -->
+            <input
+              name="howmany"
+              type="number"
+              class="form-control"
+              placeholder="{{ title.howmany }}"
+              ng-model="howmany"
+              min="{{ limit.howmany.min }}"
+              max="{{ limit.howmany.max }}"
+              ng-focus
+              ng-required="true"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.howmany.$dirty && reservation_form.howmany.$invalid && !reservation_form.howmany.$focused || (reservation_form.submitted && !reservation_form.howmany.$dirty)">
+            <small class="validation-error" ng-show="reservation_form.howmany.$error.min">Minimum number of persons is 1</small>
+            <small class="validation-error" ng-show="reservation_form.howmany.$error.max">Sorry, maximum number of persons is 2</small>
+            <small class="validation-error" ng-show="reservation_form.howmany.$error.number || reservation_form.howmany.$error.invalid">Please input a valid number of persons</small>
+            <small class="validation-error" ng-show="reservation_form.howmany.$error.required">Please input the number of persons you are</small>
           </span>
         </div>
+        <span ng-show="fields.howmany.required">*</span>
       </div>
-    
+  
+      <div class="row" ng-controller="DatepickerCtrl">
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" title="{{ title.when }}"></span></span>
+            <input
+              name="when"
+              type="text"
+              class="form-control"
+              datepicker-popup="{{ format }}"
+              placeholder="{{ title.when }}"
+              ng-model="when"
+              min="{{ minDate }}"
+              max="maxDate"
+              date-disabled="disabled(date, mode)"
+              ng-focus
+              ng-required="true"
+              style="-webkit-border-top-right-radius: 4px; -webkit-border-bottom-right-radius: 4px; -moz-border-top-right-radius: 4px; -moz-border-bottom-right-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.when.$dirty && reservation_form.when.$invalid && !reservation_form.when.$focused || (reservation_form.submitted && !reservation_form.when.$dirty)">
+            <small class="validation-error" ng-show="reservation_form.when.$error.required">Please choose the date of your arrival</small>
+          </span>
+          <!--<span>{{ when | date:'yyyy-MM-dd' }}</span>-->
+        </div>
+        <span ng-show="fields.when.required">*</span>
+      </div>
+  
       <div class="row">
-        <div class="large-12 columns">
-          <label name="email">Your email</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            ng-model="email"
-            ng-minlength=6
-            ng-maxlength=254
-            ng-focus
-          />
-          <span class="error-container" ng-show="form.email.$dirty && form.email.$invalid && !form.email.$focused">
-            <small class="error" ng-show="form.email.$error.required">Your email is required</small>
-            <small class="error" ng-show="form.email.$error.minlength">Your email is required to be at least 6 characters</small>
-            <small class="error" ng-show="form.email.$error.email">That is not a valid email. Please input a valid email</small>
-            <small class="error" ng-show="form.email.$error.maxlength">Your email cannot be longer than 254 characters</small>
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-time" title="{{ title.time }}"></span></span>
+            <select
+              name="time"
+              class="form-control"
+              ng-model="time"
+              ng-required="true"
+              style="opacity:0.7; filter:alpha(opacity=70);"
+            >
+              <option value="" selected disabled>{{ title.time }}</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="13:00">14:00</option>
+              <option value="13:00">15:00</option>
+              <option value="13:00">16:00</option>
+              <option value="13:00">17:00</option>
+              <option value="13:00">18:00</option>
+              <option value="13:00">19:00</option>
+              <option value="13:00">20:00</option>
+              <option value="13:00">21:00</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.submitted && reservation_form.time.$viewValue == undefined">
+            <small class="validation-error" ng-show="reservation_form.time.$viewValue == undefined">Please select the time of your arrival</small>
           </span>
         </div>
+        <span ng-show="fields.time.required">*</span>
       </div>
-    
-      <br />
-    
+  
       <div class="row">
-        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Confirm</button>
-        &nbsp;
-        <button type="reset" class="btn" >Cancel</button>
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon" style="opacity:0.6; filter:alpha(opacity=60);"><img src="images/reservation/glyphicons_005_car.png" width="15" title="{{ title.car }}"></span></span>
+            <select
+              name="car"
+              class="form-control"
+              ng-model="car"
+              ng-required="true"
+              style="opacity:0.7; filter:alpha(opacity=70);"
+            >
+              <option value="" selected disabled>{{ title.car }}</option>
+              <option value="1">We need parking</option>
+              <option value="0">We don't need parking</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.submitted && reservation_form.car.$viewValue == undefined">
+            <small class="validation-error" ng-show="reservation_form.car.$viewValue == undefined">Please select if you need parking or not</small>
+          </span>
+        </div>
+        <span ng-show="fields.car.required">*</span>
       </div>
-    
+  
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" title="{{ title.email }}"></span></span>
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              placeholder="{{ title.email }}"
+              ng-model="reservation.email"
+              ng-focus
+              ng-required="true"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.email.$dirty && reservation_form.email.$invalid && !reservation_form.email.$focused || (reservation_form.submitted && !reservation_form.email.$dirty)">
+            <small class="validation-error" n_g-show="reservation_form.email.$error.email">Please input a valid email address</small>
+          </span>
+        </div>
+        <span ng-show="fields.email.required">*</span>        
+      </div>
+  
+      <div class="row" ng-controller="PhoneCtrl">
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt" title="{{ title.phone }}"></span></span>
+            <input
+              name="phone"
+              type="tel"
+              class="form-control"
+              placeholder="{{ title.phone }}"
+              ng-model="reservation.phone"
+              ng-focus
+              ng-required="requirePhone"
+              ng-pattern="phoneNumberPattern"
+              ng-required="true"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container" ng-show="reservation_form.phone.$dirty && reservation_form.phone.$invalid && !reservation_form.phone.$focused || (reservation_form.submitted && !reservation_form.phone.$dirty)">
+            <small class="validation-error" ng-show="reservation_form.phone.$error.pattern">Please input a valid phone number</small>
+          </span>
+        </div>
+        <span ng-show="fields.phone.required">*</span>
+      </div>
+  
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil" title="{{ title.info }}"></span></span>
+            <textarea
+              name="info"
+              class="form-control"
+              placeholder="{{ title.info }}"
+            />
+          </div>
+        </div>
+        <span ng-show="fields.info.required">*</span>
+      </div>
+  
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <button type="submit" NOT-ng-disabled="reservation_form.$invalid" class="btn btn-primary">Confirm</button>
+          </div>
+        </div>
+      </div>
+  
     </fieldset>
   </form>
 </div>
--->

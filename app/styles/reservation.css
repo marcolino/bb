@@ -12,10 +12,23 @@ input, textarea, select {
 input.field_error {
   background: #ffe8e8;
 }
-.field_error { background: red; }
 .row {
   margin-bottom: 1.5em;
 }
+.validation-error {
+  color: #690000;
+  font-style: italic;
+}
+.dropdown-menu {
+  padding: 7px;
+}
+textarea[name=info] {
+  resize: none;
+}
+
+/*
+.text-muted { background-color: red; }
+*/
 /*
 input.ng-invalid {
 }
@@ -26,6 +39,8 @@ input.ng-valid {
   opacity: 0.3;
   filter:alpha(opacity=3);
 */
+/* ???
 .dropdown-menu {
 	padding: 7px;
 }
+*/
