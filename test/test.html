@@ -1,0 +1,36 @@
+<div class="well">
+  <form name="reservation_form" class="reservation-form" novalidate>
+
+      <legend>
+        legend
+      </legend>
+  
+      <div class="row">
+        <div class="col-xs-10">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user" title="namesurname }}"></span></span>
+            <input
+              name="namesurname" 
+              type="text"
+              class="form-control"
+              placeholder="namesurname"
+              ng-model="name"
+              ng-minlength=3
+              ng-maxlength=48
+              ng-focus
+              ng-required="true"
+            >
+          </div>
+        </div>
+        <div class="col-xs-1">
+          <span>*</span>
+        </div>
+        <div class="col-xs-12">
+          <span class="error-container">
+            <small class="validation-error">small error</small>
+          </span>
+        </div>
+      </div>
+  
+  </form>
+</div>

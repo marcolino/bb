@@ -26,6 +26,11 @@ textarea[name=info] {
   resize: none;
 }
 
+/* workaround for Android's stock browser: it renders "number" fields shorter */
+input[type=number]::-webkit-outer-spin-button {
+  margin: 0;
+}
+
 /*
 .text-muted { background-color: red; }
 */

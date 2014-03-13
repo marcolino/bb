@@ -9,10 +9,14 @@ app.directive('ngFocus', [function() {
       ctrl.$focused = false;
       element.bind('focus', function(/*evt*/) {
         element.addClass(FOCUS_CLASS);
-        scope.$apply(function() {ctrl.$focused = true;});
+        scope.$apply(function() {
+          ctrl.$focused = true;
+        });
       }).bind('blur', function(/*evt*/) {
         element.removeClass(FOCUS_CLASS);
-        scope.$apply(function() {ctrl.$focused = false;});
+        scope.$apply(function() {
+          ctrl.$focused = false;
+        });
       });
     }
   };

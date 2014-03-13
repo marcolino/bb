@@ -44,6 +44,10 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
         templateUrl: 'views/reserve.html',
         controller: 'ReservationCtrl'
       })
+    .when('/test', {
+        templateUrl: 'views/test.html'
+        //controller: 'ReservationCtrl'
+      })
     .otherwise({
         redirectTo: '/'
       });
