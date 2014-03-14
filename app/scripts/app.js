@@ -46,7 +46,6 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
       })
     .when('/test', {
         templateUrl: 'views/test.html'
-        //controller: 'ReservationCtrl'
       })
     .otherwise({
         redirectTo: '/'
@@ -96,3 +95,9 @@ app.config(function (datepickerPopupConfig) {
   datepickerPopupConfig.showButtonBar = false;
 });
 
+app.run(function ($rootScope) {
+  $rootScope.cfg = {
+    siteName: 'B&B Gli Olivi',
+    siteLogo: 'images/bbgliolivi-logo.png'
+  };
+});

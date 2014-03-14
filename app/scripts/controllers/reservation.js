@@ -1,10 +1,11 @@
 'use strict';
  
-// handle form submission when the form is completely valid  
 app.controller('ReservationCtrl',
-  function ($scope) {
+  function ($scope, $rootScope) {
 
+    $scope.cfg = $rootScope.cfg;
     $scope.legend = 'Reservation';
+    $scope.thanks = 'Thanks for your reservation request!<br />You will be soon contacted by email...';
     $scope.fields = {
       namesurname: {
         title: 'Your name and surname',
@@ -25,6 +26,12 @@ app.controller('ReservationCtrl',
       when: {
         title: 'The date of your arrival',
         required: true
+      },
+      duration: {
+        title: 'The nights you will stay',
+        required: true,
+        min: 2,
+        max: 'undefined'
       },
       time: {
         title: 'The time of your arrival',
@@ -54,6 +61,7 @@ app.controller('ReservationCtrl',
     $scope.submitForm = function() {
       if ($scope.resForm.$valid) {
         window.alert('reservation form is valid, sending request...');
+        $scope.resForm.submitted = true;
       } else {
         $scope.resForm.submitted = true;
       }
@@ -87,10 +95,13 @@ app.controller('DatepickerCtrl',
   function ($scope) {
     $scope.minDate = new Date();
     $scope.maxDate = new Date();
-    $scope.maxDate.setYear($scope.maxDate.getYear() + 1900 + 1);
+    $scope.maxDate.setYear($scope.maxDate.getFullYear() + 2);
 
+    /*
     $scope.formats = ['fullDate', 'dd MMMM yyyy', 'yyyy/MM/dd', 'shortDate'];
     $scope.format = $scope.formats[0];
+    */
+    $scope.format = 'fullDate';
 
     $scope.disabled = function(date, mode) {
       // TODO: get disabled date from service...
@@ -104,7 +115,7 @@ app.controller('PhoneCtrl',
   function ($scope) {
     $scope.phoneNumberPattern = (function() {
       //var regexp = /^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/;
-      var regexp = /^\+?[0-9 \-]{10,}\*?$/;
+      var regexp = /^\+?[0-9 \-\.]{10,}\*?$/;
       return {
         test: function(value) {
           if ($scope.requirePhone === false) {
