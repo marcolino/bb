@@ -5,7 +5,7 @@ app.controller('ReservationCtrl',
 
     $scope.cfg = $rootScope.cfg;
     $scope.legend = 'Reservation';
-    $scope.thanks = 'Thanks for your reservation request!<br />You will be soon contacted by email...';
+    $scope.thanks = 'Thanks for your reservation request!<br />We will now contact you by email...';
     $scope.fields = {
       namesurname: {
         title: 'Your name and surname',
@@ -60,7 +60,7 @@ app.controller('ReservationCtrl',
 
     $scope.submitForm = function() {
       if ($scope.resForm.$valid) {
-        window.alert('reservation form is valid, sending request...');
+        // reservation form is valid, sending request... (TODO)
         $scope.resForm.submitted = true;
       } else {
         $scope.resForm.submitted = true;

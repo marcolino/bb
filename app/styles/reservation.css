@@ -20,11 +20,8 @@ input.field_error {
   font-style: italic;
 }
 .validation-success {
+  color: #007a00;
   font-weight: bold;
-  color: #006900;
-}
-.vertically-compact {
-  padding-bottom: 0;  
 }
 .dropdown-menu {
   padding: 7px;

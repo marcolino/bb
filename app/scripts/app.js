@@ -17,6 +17,10 @@ var app = angular.module('angNewsApp', [
 app.config(function ($routeProvider/*, $httpProvider*/) {
   $routeProvider
     .when('/', {
+      templateUrl: 'views/carousel-home.html',
+      controller: 'CarouselHomeCtrl'
+    })
+    .when('/posts', {
       templateUrl: 'views/posts.html',
       controller: 'PostsCtrl'
     })

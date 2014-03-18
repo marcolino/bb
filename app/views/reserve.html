@@ -1,4 +1,4 @@
-<div class="well vertically-compact">
+<div class="well">
 
   <form
     name="resForm"
@@ -14,10 +14,8 @@
     </legend>
 
     <div class="validation-success" ng-show="(resForm.submitted && resForm.$valid)">
-      <h4>
-        <div class="glyphicon glyphicon-thumbs-up"></div>
-        <div ng-bind-html="thanks"></div>
-      </h4>
+      <span class="glyphicon glyphicon-thumbs-up"></span>
+      <span ng-bind-html="thanks"></span>
     </div>
 
     <span ng-show="(!resForm.submitted || resForm.$invalid)">
