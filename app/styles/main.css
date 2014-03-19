@@ -97,4 +97,11 @@ body {
  *
  *   .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
  */
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/*.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }*/
+
+
+
+}
+.carousel-indicators li {
+  opacity: 0.5;
+}
