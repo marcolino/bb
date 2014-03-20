@@ -1,6 +1,5 @@
 'use strict';
 
-// TODO: avoid flickering (FOUC) (use ngCloak directive...)
 app.controller('WeatherCtrl', [
   '$scope',
   '$rootScope',
@@ -23,38 +22,18 @@ app.controller('WeatherCtrl', [
         function(data) {
           $scope.currentWeatherForWoeid = data;
           $scope.weather = {};
-          $scope.weather.forecast = [ {}, {}, {}, {}, {} ];
+          $scope.weather.forecast = [ {}, {}, {}, {}, {} ]; // today + 4 days forecast
           var channel = $scope.currentWeatherForWoeid.query.results.channel;
-          var offsetDays = 0;
-
-          $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
-          $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].high + '&deg;'; // + $scope.units;
-          $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
-          $scope.weather.forecast[offsetDays].icon = 'images/weather/yahoo/white/' + channel.item.condition.code + '.png';
-          $scope.weather.forecast[offsetDays].humidity = 'Humidity' + ':' + ' ' + channel.atmosphere.humidity + '%';
-          $scope.weather.forecast[offsetDays].wind = 'Wind' + ':' + ' ' + windDegSpeed2DirSpeed(channel.wind.direction, channel.wind.speed, channel.units.speed);
-          offsetDays++;
-
-          $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
-          $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
-          $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
-          offsetDays++;
-
-          $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
-          $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
-          $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
-          offsetDays++;
-
-          $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
-          $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
-          $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
-          offsetDays++;
-
-          $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
-          $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].low + '&deg;' + channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature;
-          $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
-          offsetDays++;
-
+          for (var offsetDays = 0; offsetDays < $scope.weather.forecast.length; offsetDays++) {
+            $scope.weather.forecast[offsetDays].dayname = channel.item.forecast[offsetDays].day;
+            $scope.weather.forecast[offsetDays].temperature = channel.item.forecast[offsetDays].low + '&deg;' + ((offsetDays === 0) ? '' : channel.units.temperature + ' / ' + channel.item.forecast[offsetDays].high + '&deg;' + channel.units.temperature);
+            $scope.weather.forecast[offsetDays].description = channel.item.forecast[offsetDays].text;
+            if (offsetDays === 0) {
+              $scope.weather.forecast[offsetDays].icon = 'images/weather/yahoo/white/' + channel.item.condition.code + '.png';
+              $scope.weather.forecast[offsetDays].humidity = 'Humidity' + ':' + ' ' + channel.atmosphere.humidity + '%';
+              $scope.weather.forecast[offsetDays].wind = 'Wind' + ':' + ' ' + windDegSpeed2DirSpeed(channel.wind.direction, channel.wind.speed, channel.units.speed);
+            }
+          }
         },
         function(status) {
           $scope.currentWeatherForWoeid = null;
@@ -62,13 +41,15 @@ app.controller('WeatherCtrl', [
         }
       );
     };
+
     function windDegSpeed2DirSpeed(degrees, speed, unit) {
       var directions = [
         'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
         'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
       ];
-      degrees = parseInt(degrees);
-      return directions[parseInt(((degrees + 11.25) / 22.5) % 16)] + ' ' + parseFloat(speed).toFixed(1) + ' ' + unit;
+      var n = directions.length;
+      var degrees = parseInt(degrees);
+      return directions[parseInt(((degrees + ((360 / n) / 2)) / (360 / n)) % n)] + ' ' + parseFloat(speed).toFixed(1) + ' ' + unit;
     }
 
     $scope.getWeatherForWOEID(); // update weather

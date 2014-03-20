@@ -1,15 +1,12 @@
-  <div ng-controller="CarouselHomeCtrl">
-    <div style="height: 305px; background-size: cover">
-      <carousel interval="interval">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img ng-src="{{slide.image}}" style="margin: auto;">
-<!--
-          <div class="carousel-caption">
-            <h4>Slide {{$index}}</h4>
-            <p>{{slide.text}}</p>
-          </div>
--->
-        </slide>
-      </carousel>
-    </div>
-  </div>
+<div style="height: 305px; background-size: cover">
+  <carousel interval="interval">
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.image}}" style="margin: auto;">
+      <!--
+      <div class="carousel-caption">
+        <p>{{slide.text}}</p>
+      </div>
+      -->
+    </slide>
+  </carousel>
+</div>

@@ -25,35 +25,35 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
       controller: 'PostsCtrl'
     })
     .when('/posts/:postId', {
-        templateUrl: 'views/showpost.html',
-        controller: 'PostViewCtrl'
-      })
+      templateUrl: 'views/showpost.html',
+      controller: 'PostViewCtrl'
+    })
     .when('/users/:username', {
-        templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl'
-      })
+      templateUrl: 'views/profile.html',
+      controller: 'ProfileCtrl'
+    })
     .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'AuthCtrl'
-      })
+      templateUrl: 'views/login.html',
+      controller: 'AuthCtrl'
+    })
     .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'AuthCtrl'
-      })
+      templateUrl: 'views/register.html',
+      controller: 'AuthCtrl'
+    })
     .when('/weather', {
-        templateUrl: 'views/weather.html',
-        controller: 'WeatherCtrl'
-      })
+      templateUrl: 'views/weather.html',
+      controller: 'WeatherCtrl'
+    })
     .when('/reserve', {
-        templateUrl: 'views/reserve.html',
-        controller: 'ReservationCtrl'
-      })
+      templateUrl: 'views/reserve.html',
+      controller: 'ReservationCtrl'
+    })
     .when('/test', {
-        templateUrl: 'views/test.html'
-      })
+      templateUrl: 'views/test.html'
+    })
     .otherwise({
-        redirectTo: '/'
-      });
+      redirectTo: '/'
+    });
 
   /*
   // push a responseInterceptor to httpProvider to simulate network slow-downs...
