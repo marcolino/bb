@@ -14,9 +14,9 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET": // get info from the database
-      $id = explode("carousel/", $_SERVER['REQUEST_URI']);
+      $id = explode("slide/", $_SERVER['REQUEST_URI']);
       if (isset($id[1])) {
-        $result = $obj->getSlide($id[1]);
+        $result = array( $obj->getSlide($id[1]) );
       } else {
         $result = $obj->getSlides();
       }
@@ -48,7 +48,7 @@
   }
   
   header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: *');
+  header('Access-Control-Allow-Origin: http://192.168.10.30:9090');
 
   echo json_encode($result);
 ?>

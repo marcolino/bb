@@ -3,7 +3,7 @@
 app.factory('Carousel', function($resource) {
   var SERVER_URL = '//192.168.10.30/ang-news/api/';
 
-  return $resource(SERVER_URL + 'slide', // /:slideId
+  return $resource(SERVER_URL + 'slide/:slideId',
 		{ slideId: '@slideId' }, {
 		  getSlides: {
         method: 'GET',
@@ -12,7 +12,7 @@ app.factory('Carousel', function($resource) {
 		  getSlide: {
         method: 'GET',
 			  params: { slideId: '@slideId' },
-			  isArray: false
+			  isArray: true
 		  }
 		});
 

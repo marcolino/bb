@@ -23,9 +23,14 @@ class BB {
   }
 
   public function getSlide(/*integer*/ $id = null) {
-    if (is_integer($id) && $id >= 0 && $id < sizeof($this->books)) {
+    $id = intval($id);
+    if (is_integer($id) && $id >= 0) {
       $this->getSlides();
-      return $this->slides[$id];
+      if ($id < sizeof($this->slides)) {
+        return $this->slides[$id];
+      } else {
+        return null;
+      }
     } else {
       return null;
     }

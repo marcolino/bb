@@ -48,8 +48,12 @@ app.controller('WeatherCtrl', [
         'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
       ];
       var n = directions.length;
-      var degrees = parseInt(degrees);
-      return directions[parseInt(((degrees + ((360 / n) / 2)) / (360 / n)) % n)] + ' ' + parseFloat(speed).toFixed(1) + ' ' + unit;
+      var d = parseInt(degrees);
+      return directions[parseInt(((d + ((360 / n) / 2)) / (360 / n)) % n)] +
+        ' ' +
+        parseFloat(speed).toFixed(1) +
+        ' ' +
+        unit;
     }
 
     $scope.getWeatherForWOEID(); // update weather

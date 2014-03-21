@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="styles/weather.css">
     <!--<link rel='stylesheet' href='styles/weather-icons.css'>-->
     <link rel='stylesheet' href="styles/reservation.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans"> <!-- TODO: download locally (?...) -->
+    <link rel="stylesheet" href="styles/map.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans"> <!-- TODO: download locally (?...) -->
     <!-- endbuild -->
   </head>
   <body ng-app="angNewsApp">
@@ -63,6 +64,9 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/angularfire/angularfire.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -77,6 +81,7 @@
     <script src="scripts/controllers/nav.js"></script>
     <script src="scripts/controllers/weather.js"></script>
     <script src="scripts/controllers/reservation.js"></script>
+    <script src="scripts/controllers/map.js"></script>
     <script src="scripts/services/post.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/user.js"></script>

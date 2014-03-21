@@ -7,7 +7,8 @@ var app = angular.module('angNewsApp', [
   'ngSanitize',
   'ngRoute',
   'firebase',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'google-maps'
 ])
 .constant('FIREBASE_URL', 'https://blinding-fire-5694.firebaseio.com/')
 .constant('APP_NAME', 'ang-news')
@@ -47,6 +48,10 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
     .when('/reserve', {
       templateUrl: 'views/reserve.html',
       controller: 'ReservationCtrl'
+    })
+    .when('/map', {
+      templateUrl: 'views/map.html',
+      controller: 'MapCtrl'
     })
     .when('/test', {
       templateUrl: 'views/test.html'
