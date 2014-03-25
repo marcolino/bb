@@ -104,9 +104,19 @@ app.config(function (datepickerPopupConfig) {
   datepickerPopupConfig.showButtonBar = false;
 });
 
-app.run(function ($rootScope) {
+app.run(function ($rootScope/*, $window*/) {
   $rootScope.cfg = {
     siteName: 'B&B Gli Olivi',
     siteLogo: 'images/bbgliolivi-logo.png'
   };
+
+/*
+  $rootScope.windowWidth = $window.outerWidth;
+  angular.element($window).bind('resize', function() {
+    $rootScope.windowWidth = $window.outerWidth;
+    window.console.log($rootScope.windowWidth);
+    $rootScope.$apply('windowWidth');
+    google.maps.event.trigger(angular.element($window).map, 'load');
+  });
+*/
 });

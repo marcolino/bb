@@ -17,6 +17,13 @@ module.exports = function(config) {
       'app/bower_components/angular-cookies/angular-cookies.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/firebase/firebase.js',
+      'app/bower_components/firebase-simple-login/firebase-simple-login.js',
+      'app/bower_components/angularfire/angularfire.js',
+      'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'app/bower_components/underscore/underscore.js',
+      'http://maps.googleapis.com/maps/api/js?sensor=false',
+      'app/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
@@ -24,14 +31,14 @@ module.exports = function(config) {
       //'test/mock/**/*.js',
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: [ ],
 
     // web server port
     port: 8080,
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes
