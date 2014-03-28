@@ -36,7 +36,8 @@ module.exports = function (grunt) {
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js', 'test/e2e/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+        //tasks: ['newer:jshint:test', 'karma']
+        tasks: ['newer:jshint:test', 'protractor:run']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -60,7 +61,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9090,
+        port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         //hostname: 'localhost',
         hostname: '0.0.0.0',
@@ -316,16 +317,51 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
+      /*
       e2e: {
-       configFile: 'karma-e2e.conf.js'
+        configFile: 'karma-e2e.conf.js',
+        singleRun: true
       },
+      */
       unit: {
         configFile: 'karma.conf.js',
-        singleRun: false
+        singleRun: true
       }
+    },
+
+    protractor: {
+      options: {
+        keepAlive: true,
+        configFile: "protractor.conf.js"
+      },
+      run: {}
     }
+
+/*
+    webdriver: {
+      options: {
+        desiredCapabilities: {
+          browserName: 'phantomjs'
+        }
+      },
+      form: {
+        tests: ['test/e2e/** /*.js']
+      }
+      // ...
+    }
+    protractor_webdriver: {
+      your_target: {
+        options: {
+          path: '/usr/local/bin/',
+          command: 'webdriver-manager start',
+        },
+      }
+  },
+*/
+
   });
 
+  //grunt.loadNpmTasks('grunt-protractor-webdriver');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -342,17 +378,13 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve']);
-  });
-
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'karma',
+    'protractor:run'
   ]);
 
   grunt.registerTask('build', [
