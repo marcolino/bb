@@ -53,6 +53,14 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
       templateUrl: 'views/map.html',
       controller: 'MapCtrl'
     })
+    .when('/contacts', {
+      templateUrl: 'views/panel.html',
+      controller: 'ContactsCtrl'
+    })
+    .when('/services', {
+      templateUrl: 'views/panel.html',
+      controller: 'ServicesCtrl'
+    })
     .when('/test', {
       templateUrl: 'views/test.html'
     })

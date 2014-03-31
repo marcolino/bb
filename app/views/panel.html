@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">{{ title }}</h1>
+  </div>
+  
+  <div class="panel-body">
+    <div ng-repeat="field in fields | orderBy:ord">
+      <span class="col-md-12">
+        <span class="glyphicon glyphicon-{{ field.glyphicon }}" title="{{ field.key }}" />
+        <span class="panel-key"><i>{{ field.key }}:</i></span>
+        <span class="panel-val">{{ field.val }}</span>
+      </span>
+    </div>
+  </div>
+
+</div>
