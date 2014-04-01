@@ -1,6 +1,21 @@
-.panel-contacts, .panel-title, .panel-body {
+.panel-title, .panel-body {
   font-family: 'Open Sans', sans-serif;
 }
-.panel-val {
-  padding-left: 0.5em;
+.panel-heading {
+}
+.panel-title {
+	margin-left: 0.5em;
+}
+.panel-title-text {
+	margin-left: 0.5em;
+}
+.panel-column-icon {
+	text-align: center;
+}
+.panel-column-key {
+	text-align: right;
+	font-style: italic;
+}
+.panel-column-val {
+	text-align: left;
 }

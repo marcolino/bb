@@ -42,7 +42,7 @@ app.controller('ServicesCtrl',
         ord: 7
       }, {
         key: 'Additional services',
-        val: 'Fridge bar, TV (Sat), WI-FI',
+        val: 'Fridge bar, TV sat, WI-FI',
         glyphicon: 'plus-sign',
         ord: 8
       },

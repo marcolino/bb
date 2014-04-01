@@ -1,17 +1,32 @@
 <div class="panel panel-default">
 
   <div class="panel-heading">
-    <h1 class="panel-title">{{ title }}</h1>
+    <span class="panel-title">
+      <span class="panel-title-icon">
+        <img src="images/bb-logo.png" height="14">
+      </span>
+      <span class="panel-title-text">
+        {{ title }}
+      </span>
+    </span>
   </div>
   
   <div class="panel-body">
-    <div ng-repeat="field in fields | orderBy:ord">
-      <span class="col-md-12">
-        <span class="glyphicon glyphicon-{{ field.glyphicon }}" title="{{ field.key }}" />
-        <span class="panel-key"><i>{{ field.key }}:</i></span>
-        <span class="panel-val">{{ field.val }}</span>
-      </span>
-    </div>
+
+    <table class="table table-bordered table-striped">
+      <tr ng-repeat="field in fields | orderBy:ord">
+        <td class="col-md-1 panel-column-icon">
+          <span class="glyphicon glyphicon-{{ field.glyphicon }}" title="{{ field.key }}" />
+        </td>
+        <td class="col-md-4 panel-column-key">
+          <i>{{ field.key }}</i>
+        </td>
+        <td class="col-md-7 panel-column-val">
+          {{ field.val }}
+        </td>
+      </tr>
+    </table>
+
   </div>
 
 </div>

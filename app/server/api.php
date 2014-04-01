@@ -20,14 +20,6 @@
       } else {
         $result = $obj->getSlides();
       }
-/*
-      $id = explode("book/", $_SERVER['REQUEST_URI']);
-      if (isset($id[1])) {
-        $result = $obj->get_book_by_id($id[1]);
-      } else {
-        $result = $obj->get_books();
-      }
-*/
       break;
     case "POST": // save a new record in the database
       $result = $obj->register_new_book($_POST);
@@ -48,7 +40,6 @@
   }
   
   header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: http://192.168.10.30:9090');
-
+  header('Access-Control-Allow-Origin: ' . $obj->getAccessControlAllowOrigin());
   echo json_encode($result);
 ?>

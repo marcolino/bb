@@ -144,6 +144,7 @@
             <span class="input-group-addon"><span class="glyphicon glyphicon-time" title="{{ fields.time.title }}"></span></span>
             <select
               name="time"
+              id="time"
               class="form-control"
               ng-model="time"
               ng-required="true"
@@ -170,6 +171,7 @@
             <span class="input-group-addon" style="opacity:0.6; filter:alpha(opacity=60);"><img src="images/reservation/glyphicons_005_car.png" width="15" title="{{ fields.car.title }}"></span></span>
             <select
               name="car"
+              id="car"
               class="form-control"
               ng-model="car"
               ng-required="true"
@@ -200,7 +202,7 @@
               type="email"
               class="form-control"
               placeholder="{{ fields.email.title }}"
-              ng-model="reservation.email"
+              ng-model="email"
               ng-focus
               ng-required="true"
             />
@@ -261,7 +263,7 @@
   
       <div class="row last-row" s_tyle="margin-bottom: 0;">
         <div class="col-xs-12">
-          <button type="submit" n_g-disabled="resForm.$invalid" class="btn btn-primary">
+          <button id="submit" type="submit" n_g-disabled="resForm.$invalid" class="btn btn-primary">
             <span class="glyphicon glyphicon-ok white"></span>&nbsp;
             Confirm
           </button>
