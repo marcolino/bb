@@ -5,7 +5,7 @@ th {
   font-family: 'Open Sans', sans-serif;
   padding-top: 5px;
 }
-input, textarea, select {
+.reservation-form input, textarea, select {
   min-width: 15.0em;
   font-family: inherit;
 }
