@@ -41,6 +41,9 @@ app.directive('paypalButton', function() {
         'LG' // large
       ];
       var name = this.name;
+      function err(reason) {
+        element.replaceWith('<span style="background-color:red; color:yellow; padding:.5em;">' + name + ': ' + reason + '</span>');
+      }
       var action = attrs.action || 'https://www.paypal.com/us/cgi-bin/webscr';
       var business = attrs.business;
       var languageCode = attrs.languageCode || 'en_US';
@@ -67,10 +70,6 @@ app.directive('paypalButton', function() {
         '<input type="image" src="' + imgSrc + '" border="0" name="submit" alt="' + imgAlt + '">' +
         '</form>';
       element.replaceWith(template);
-
-      function err(reason) {
-        element.replaceWith('<span style="background-color:red; color:yellow; padding:.5em;">' + name + ': ' + reason + '</span>');
-      }
     }
   };
 
