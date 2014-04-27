@@ -289,7 +289,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'copy:styles',
-        'imagemin',
+        //'imagemin', // concurrent imagemin fills ram and swap and then crashes...
         'svgmin'
       ]
     },
