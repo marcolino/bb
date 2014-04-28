@@ -1,7 +1,8 @@
 <?php 
 
 class BB {
-  public $accessControlAllowOrigin = "http://0.0.0.0:9000";
+  //protected $accessControlAllowOrigin = "http://0.0.0.0:9000";
+  protected $accessControlAllowOrigin = "*";
   protected $imagesPath = "../images/carousel-home/";
   protected $slides = array();
 
