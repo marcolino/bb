@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('CarouselHomeCtrl', function ($scope, Carousel/*, $http*/) {
+app.controller('CarouselHomeCtrl', function ($scope, Carousel) {
   $scope.interval = 5 * 1000;
   $scope.slides = [];
 
