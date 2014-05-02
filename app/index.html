@@ -21,13 +21,10 @@
     <!--<link rel='stylesheet' href='styles/weather-icons.css'>-->
     <link rel='stylesheet' href="styles/reservation.css">
     <link rel="stylesheet" href="styles/map.css">
-    <link rel="stylesheet" href="styles/panel.css">
-    <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans"> <!-- TODO: download locally (?...) -->
     <!-- endbuild -->
   </head>
   <body ng-app="angNewsApp">
-
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -74,6 +71,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
     <script src="scripts/app.js"></script>
     <!--<script src="scripts/controllers/main.js"></script>-->
     <script src="scripts/controllers/carousel-home.js"></script>
@@ -85,8 +83,6 @@
     <script src="scripts/controllers/weather.js"></script>
     <script src="scripts/controllers/reservation.js"></script>
     <script src="scripts/controllers/map.js"></script>
-    <script src="scripts/controllers/contacts.js"></script>
-    <script src="scripts/controllers/services.js"></script>
     <script src="scripts/services/post.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/user.js"></script>
@@ -97,7 +93,6 @@
     <script src="scripts/directives/checkusername.js"></script>
     <script src="scripts/directives/formautofillfix.js"></script>
     <script src="scripts/directives/utils.js"></script>
-    <script src="scripts/directives/paypalbutton.js"></script>
     <!-- endbuild -->
   </body>
 </html>

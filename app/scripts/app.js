@@ -61,11 +61,8 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
       templateUrl: 'views/panel.html',
       controller: 'ServicesCtrl'
     })
-    .when('/test', {
-      templateUrl: 'views/test.html'
-    })
     .otherwise({
-      redirectTo: '/'
+      templateUrl: '404.html'
     });
 
   /*

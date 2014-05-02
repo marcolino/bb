@@ -341,7 +341,7 @@ module.exports = function (grunt) {
         configFile: 'protractor.conf.js'
       },
       run: {}
-    }
+    },
 
 /*
     webdriver: {
@@ -365,9 +365,19 @@ module.exports = function (grunt) {
   },
 */
 
+    json2js: {
+      build: {
+        src: '<%= yeoman.app %>/scripts/config.json',
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        varname: '_config'
+      },
+    }
+
   });
 
   //grunt.loadNpmTasks('grunt-protractor-webdriver');
+
+  grunt.loadTasks('tasks');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -407,7 +417,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'json2js'
   ]);
 
   grunt.registerTask('default', [
@@ -415,4 +426,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 };

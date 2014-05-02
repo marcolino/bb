@@ -1,9 +1,7 @@
 'use strict';
 
 app.factory('Carousel', function($resource) {
-  var SERVER_URL = '//localhost/ang-news/api/';
-
-  return $resource(SERVER_URL + 'slide/:slideId',
+  return $resource(_config.serverURL + 'slide/:slideId',
 		{ slideId: '@slideId' }, {
 		  getSlides: {
         method: 'GET',

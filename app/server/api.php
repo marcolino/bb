@@ -11,6 +11,7 @@
 */
 
   $obj = new BB();
+  $obj->config() or $obj->error("Can't configure BB object");
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET": // get info from the database
@@ -40,6 +41,8 @@
   }
   
   header('Content-type: application/json');
-  header('Access-Control-Allow-Origin: ' . $obj->getAccessControlAllowOrigin());
+  header($obj->getAccessControlAllow("Origin"));
+  header($obj->getAccessControlAllow("Methods"));
+  header($obj->getAccessControlAllow("Headers"));
   echo json_encode($result);
 ?>
