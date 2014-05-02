@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('Carousel', function($resource) {
-  return $resource(_config.serverURL + 'slide/:slideId',
+  return $resource(config.serverURL + 'slide/:slideId',
 		{ slideId: '@slideId' }, {
 		  getSlides: {
         method: 'GET',

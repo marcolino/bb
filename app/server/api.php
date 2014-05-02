@@ -35,6 +35,13 @@
         $result = $obj->delete_book($id[1]);
       }
       break;
+    case "VERIFYEMAIL":
+      $sve = new SMTPValidateEmail();
+      $email = explode("email/", $_SERVER['REQUEST_URI']);
+      if (isset($email[1])) {
+        $result = $bb->verify($email[1]);
+      }
+      break;
     default:
       header('HTTP/1.1 405 Method Not Allowed');
       return;

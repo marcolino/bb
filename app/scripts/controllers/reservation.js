@@ -1,7 +1,7 @@
 'use strict';
  
 app.controller('ReservationCtrl',
-  function ($scope, $rootScope, Reservation) {
+  function ($scope, $rootScope/*, Reservation*/) {
 
     $scope.cfg = $rootScope.cfg;
     $scope.legend = 'Reservation';

@@ -102,7 +102,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
+        '!<%= yeoman.app %>/scripts/config.js',
       ],
       test: {
         options: {
@@ -369,7 +370,7 @@ module.exports = function (grunt) {
       build: {
         src: '<%= yeoman.app %>/scripts/config.json',
         dest: '<%= yeoman.app %>/scripts/config.js',
-        varname: '_config'
+        varname: 'config'
       },
     }
 

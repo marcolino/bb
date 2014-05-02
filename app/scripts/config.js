@@ -1,4 +1,4 @@
-var _config = {
+var config = {
   'accessControlAllow': {
     'Origin': 'http://0.0.0.0:9000',
     'Methods': 'GET, POST',
