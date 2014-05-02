@@ -45,36 +45,11 @@ class BB {
     }
   }
 
-  public function getAccessControlAllow(/*string*/ $what) {
-    return "Access-Control-Allow-${what}: " . $this->config["accessControlAllow"][$what];
-  }
-  
-  public function config() {
-    set_error_handler(
-      create_function(
-        '$severity, $message, $file, $line',
-        'throw new ErrorException($message, $severity, $severity, $file, $line);'
-      )
-    );
-    try {
-      $configJSON = @file_get_contents(CONFIG_FILE_PATH);
-      if (($this->config = json_decode($configJSON, TRUE)) == NULL) {
-        $this->lastError = "Can't decode JSON from config file '" . CONFIG_FILE_PATH . "': " . json_last_error();
-        return FALSE;
-      }
-      return TRUE;
-    }
-    catch (Exception $e) {
-      $this->lastError = "Can't read config file '" . CONFIG_FILE_PATH . "': " . $e->getMessage();
-      return FALSE;
-    }
+
+
+  public function __construct(/*...*/) {
   }
    
-  public function error(/*string*/ $msg = null) {
-    echo json_encode(array("error" => ($msg && $this->lastError ? $msg . "\n" : $msg) . $this->lastError));
-    exit(-1);
-  }
-
 }
 
 ?>
