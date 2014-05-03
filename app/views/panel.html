@@ -13,13 +13,13 @@
   
   <div class="panel-body">
 
-    <table class="table table-bordered table-striped">
-      <tr ng-repeat="field in fields | orderBy:ord">
+    <table class="table table-bordered t_able-striped"><!-- table striped is flawed on FF with ng 1.2.6 -->
+      <tr ng-repeat="field in fields | orderBy:ord" ng-class="['panel-row-even', 'panel-row-odd'][$index %2]">
         <td class="col-md-1 panel-column-icon">
           <span class="glyphicon glyphicon-{{ field.glyphicon }}" title="{{ field.key }}" />
         </td>
         <td class="col-md-4 panel-column-key">
-          <i>{{ field.key }}</i>{{ $index }}
+          <i>{{ field.key }}</i>
         </td>
         <td class="col-md-7 panel-column-val">
           {{ field.val }}

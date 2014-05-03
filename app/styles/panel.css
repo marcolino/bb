@@ -19,3 +19,9 @@
 .panel-column-val {
 	text-align: left;
 }
+.panel-row-odd {
+  background-color: #ffffff;
+}
+.panel-row-even {
+  background-color: #f8f8ff;
+}
