@@ -109,12 +109,13 @@ app.config(function (datepickerPopupConfig) {
   datepickerPopupConfig.showButtonBar = false;
 });
 
-app.run(function ($rootScope/*, $window*/) {
+app.run(function (/*$rootScope*/ /*, $window*/) {
+/*
   $rootScope.cfg = {
-    siteName: 'B&B Gli Olivi',
+    siteName: 'B&B Gli Olivi'
     siteLogo: 'images/bbgliolivi-logo.png'
   };
-
+*/
 /*
   $rootScope.windowWidth = $window.outerWidth;
   angular.element($window).bind('resize', function() {
