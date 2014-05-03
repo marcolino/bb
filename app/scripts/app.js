@@ -7,8 +7,8 @@ var app = angular.module('angNewsApp', [
   'ngSanitize',
   'ngRoute',
   'firebase',
-  'ui.bootstrap',
-  'google-maps'
+  'ui.bootstrap'
+  //'google-maps'
 ])
 .constant('FIREBASE_URL', 'https://blinding-fire-5694.firebaseio.com/')
 .constant('APP_NAME', 'ang-news')
