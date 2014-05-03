@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MapCtrl', function ($scope, $rootScope) {
+app.controller('MapCtrl', function ($scope) {
   //var GOOGLE_MAPS_TITLE = 'Mappa di Portovenere';
   //var GOOGLE_MAPS_BALLOON_TEXT = 'Il Bed & Breakfast "Gli Olivi" &egrave; qui';
   var GOOGLE_MAPS_ADDRESS_LATITUDE = 44.05954;
@@ -23,7 +23,7 @@ app.controller('MapCtrl', function ($scope, $rootScope) {
         mapTypeId: google.maps.MapTypeId.HYBRID,
         mapTypeControl: false
       },
-      tooltip: $rootScope.cfg.siteName
+      tooltip: config.siteName
     }
   });
 
