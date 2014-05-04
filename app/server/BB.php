@@ -45,12 +45,14 @@ class BB {
     }
   }
 
-  public function getAccessControlAllow(/*string*/ $what) {
+/*
+  public function getAccessControlAllow($what) {
     return "Access-Control-Allow-${what}: " . $this->config["accessControlAllow"][$what];
   }
+*/
   public function setAccessControlHeader() {
-    echo "$_SERVER[HTTP_HOST]" . "<br>\n";
-    header("Access-Control-Allow-Origin" . ": " . "http://0.0.0.0:9000");
+    header("Access-Control-Allow-Origin" . ": " . "*");
+    //header("Access-Control-Allow-Origin" . ": " . "http://localhost:9000 http://marcolino.github.io http://www.portovenere.biz");
     header("Access-Control-Allow-Methods" . ": " . "GET, POST");
     header("Access-Control-Allow-Headers" . ": " . "accept, origin, content-type");
   }
