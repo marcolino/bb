@@ -47,7 +47,7 @@
       return;
   }
   
-  header('Content-type: application/json');
+  header('Content-type: application/json; charset=utf-8');
   /*
   header($obj->getAccessControlAllow("Origin"));
   header($obj->getAccessControlAllow("Methods"));
