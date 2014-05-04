@@ -1,4 +1,5 @@
 var config = {
+  "siteName": "B&B Gli Olivi",
   "accessControlAllow": {
     "Origin": "http://0.0.0.0:9000",
     "Methods": "GET, POST",

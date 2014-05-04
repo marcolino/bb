@@ -23,7 +23,7 @@ app.controller('MapCtrl', function ($scope, $rootScope) {
         mapTypeId: google.maps.MapTypeId.HYBRID,
         mapTypeControl: false
       },
-      tooltip: $rootScope.cfg.siteName
+      tooltip: config.siteName
     }
   });
 
