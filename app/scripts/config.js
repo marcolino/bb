@@ -6,5 +6,5 @@ var config = {
     "Headers": "accept, origin, content-type"
   },
   "carouselImagesPath": "../images/carousel-home/",
-  "serverURL": "//localhost/bb/api/"
+  "serverURL": "//localhost/ang-news/api/"
 };
