@@ -23,7 +23,7 @@ module.exports = function(config) {
       'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/bower_components/underscore/underscore.js',
       'http://maps.googleapis.com/maps/api/js?sensor=false',
-      'app/bower_components/angular-google-maps/dist/angular-google-maps.js',
+      //'app/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'

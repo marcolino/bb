@@ -1,6 +1,11 @@
 'use strict';
  
 app.controller('NavCtrl', function ($scope, $location, Post, Auth) {
+  $scope.isCollapsed = true;
+  $scope.$on('$routeChangeSuccess', function () {
+    $scope.isCollapsed = true;
+  });
+
   $scope.resetPost = function () {
     $scope.post = {url: 'http://', title: ''};
   };
