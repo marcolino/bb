@@ -366,7 +366,7 @@ module.exports = function (grunt) {
       }
   },
 */
-
+/*
     json2js: {
       build: {
         src: '<%= yeoman.app %>/scripts/config.json',
@@ -374,7 +374,7 @@ module.exports = function (grunt) {
         varname: 'config'
       },
     }
-
+*/
   });
 
   //grunt.loadNpmTasks('grunt-protractor-webdriver');
@@ -420,7 +420,7 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin',
-    'json2js'
+    //'json2js'
   ]);
 
   grunt.registerTask('default', [

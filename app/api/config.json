@@ -1,4 +1,4 @@
-var config = {
+{
   "siteName": "B&B Gli Olivi",
   "accessControlAllow": {
     "Origin": "http://0.0.0.0:9000",
@@ -6,5 +6,6 @@ var config = {
     "Headers": "accept, origin, content-type"
   },
   "carouselImagesPath": "../images/carousel-home/",
-  "serverURL": "//www.portovenere.biz/bb/api/"
-};
+  "serverURL": "//192.168.10.30/bb/api/",
+  "serverURL2": "//www.portovenere.biz/bb/api/"
+}

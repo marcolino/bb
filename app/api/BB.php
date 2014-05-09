@@ -1,6 +1,4 @@
-<?php 
-
-define("CONFIG_FILE_PATH",  "../scripts/config.json");
+<?php
 
 class BB {
   private $config = NULL;
@@ -77,8 +75,10 @@ class BB {
       return FALSE;
     }
   }
-   
+
   public function error(/*string*/ $msg = null) {
+    header('Content-type: application/json; charset=utf-8');
+    $this->setAccessControlHeader();
     echo json_encode(array("error" => ($msg && $this->lastError ? $msg . "\n" : $msg) . $this->lastError));
     exit(-1);
   }

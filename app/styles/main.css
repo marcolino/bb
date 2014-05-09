@@ -2,96 +2,166 @@ body {
   background: #F3F3F3;
 }
 
+/* deferred-bootstrap */
+#loading {
+  display: none;
+}
+.deferred-bootstrap-loading .my-custom-loading #loading {
+  display: block !important;
+  background-color: yellow;
+  color: darkgreen;
+}
+
+#error {
+  display: none;
+}
+.deferred-bootstrap-error .my-custom-error #error {
+  display: block !important;
+  background-color: red;
+  color: black;
+}
+
+
+
 .container { /* for navbar-fixed-top */
   margin-top: 64px;
 }
 
-.navbar-collapse.collapsing {
-  p_osition: absolute; 
-  b_ackground-color: rgba(0,0,0,0.5);
+.navbar-collapse.collapsing,
+.navbar-collapse.in {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.80);
 }
 
-.navbar-collapse.in {
-  p_osition: absolute; 
-  background-color: rgba(0,0,0,0.5);
+.navbar-collapse.collapse {
+  padding-right: 1.0em;
 }
+
+/*
+.open > .navbar-collapse {
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  opacity: 1;
+}
+
+.navbar-collapse.collapse {
+  opacity: 0.0;
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;  
+  animation-fill-mode: forwards; 
+  -webkit-transform: scale(1, 0);
+  display: block; 
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+}
+*/
+
 /* navbar */
 .navbar-default {
-  background-color: #F8F8F8;
+  font-family: 'Yanone Kaffeesatz', serif; font-weight: bold;
+  font-size: 2.0em;
+  color: white;
   border-color: #E7E7E7;
-  b_ackground-color: rgba(0,0,0,0.8);
-  background-image: none;
-  border-bottom-color: rgba(0,0,0,0);
-  text-align: center;
-  font-family: Open Sans;
-  font-size: 2.1em;
-  text-transform: uppercase;
+  border-color: rgba(0, 0, 0, 0);
+  /*padding-right: 2.3em;*/
 }
+
 /* title */
 .navbar-default .navbar-brand {
-    color: #777;
+  font-size: 1.2em;
+  color: #222;
 }
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
+  color: #000;
 }
+
 /* link */
 .navbar-default .navbar-nav > li > a {
-    color: #777;
+  font-family: 'Yanone Kaffeesatz', serif; font-weight: bold;
+  font-size: 1.4em;
+  color: #999999;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 0.4em;
+  /*border-bottom: 1px solid rgba(200, 200, 200, 0.1);*/
 }
+
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+  color: #eeeeee;
+  /*text-shadow: 1px 1px #888888;*/
+  background-color: rgba(255, 255, 255, 0.02);
 }
+
+/*
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #555;
-    background-color: #E7E7E7;
+  color: red;
+  background-color: yellow;
 }
+*/
+
+/*
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #D5D5D5;
+  color: green;
+  background-color: yellow;
 }
-/* caret */
+*/
+
+/*
+/* caret * /
 .navbar-default .navbar-nav > .dropdown > a .caret {
-    border-top-color: #777;
-    border-bottom-color: #777;
+  border-top-color: green;
+  border-bottom-color: green;
 }
+
 .navbar-default .navbar-nav > .dropdown > a:hover .caret,
 .navbar-default .navbar-nav > .dropdown > a:focus .caret {
-    border-top-color: #333;
-    border-bottom-color: #333;
+  border-top-color: red;
+  border-bottom-color: red;
 }
+
 .navbar-default .navbar-nav > .open > a .caret, 
 .navbar-default .navbar-nav > .open > a:hover .caret, 
 .navbar-default .navbar-nav > .open > a:focus .caret {
-    border-top-color: #555;
-    border-bottom-color: #555;
+  border-top-color: orange;
+  border-bottom-color: orange;
 }
+*/
+
 /* mobile version */
 .navbar-default .navbar-toggle {
-    border-color: #DDD;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #DDD;
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #CCC;
-}
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #777;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #333;
-    }
+  border-color: #dddddd;
 }
 
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  border-color: #aaaaaa;
+  background-color: #dddddd;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #CCC;
+}
+
+/*
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+  }
+}
+*/
 
 
 .nav-pic {
@@ -125,7 +195,7 @@ body {
 
 
 /* PROFILE PAGE */
-.prof-img{
+.prof-img {
   width:100%;
   max-width:100px;
   -webkit-border-radius: 100px;
@@ -161,18 +231,18 @@ body {
 }
 
 .cmt-form {
-  margin-top:30px;
+  margin-top: 30px;
 }
 
 .cmt {
-  margin-top:10px;
-  padding-top:10px;
-  border-top:1px solid #ccc;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
 }
 
 .cmt .author {
-  font-size:11px;
-  color:#bbb;
+  font-size: 11px;
+  color: #bbb;
 }
 
 /*

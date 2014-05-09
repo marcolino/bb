@@ -2,6 +2,8 @@
 
   require_once "BB.php";
 
+  define("CONFIG_FILE_PATH", "config.json");
+
 /*
   session_start();
   if (!isset($_SESSION['user'])) {
@@ -12,15 +14,27 @@
 
   $obj = new BB();
   $obj->config() or $obj->error("Can't configure BB object");
+  $result = "";
+  $keys = parse_url($_SERVER['REQUEST_URI']); // parse the uri
+  $path = explode("/", $keys['path']); // split the path
+  $action = end($path); // last part of the path (TODO: get first part after "/APPNAME/api/"...)
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case "GET": // get info from the database
-      $id = explode("slide/", $_SERVER['REQUEST_URI']);
-      if (isset($id[1])) {
-        $result = array( $obj->getSlide($id[1]) );
-      } else {
-        $result = $obj->getSlides();
+      if ($action == "config") {
+        $result = json_decode(file_get_contents(CONFIG_FILE_PATH));
+        break;
       }
+      if ($action == "slide") {
+        $id = explode("slide/", $_SERVER['REQUEST_URI']);
+        if (isset($id[1])) {
+          $result = array($obj->getSlide($id[1]));
+        } else {
+          $result = $obj->getSlides();
+        }
+        break;
+      }
+      header('HTTP/1.1 501 Not Implemented');
       break;
     case "POST": // save a new record in the database
       $result = $obj->register_new_book($_POST);
@@ -48,11 +62,7 @@
   }
   
   header('Content-type: application/json; charset=utf-8');
-  /*
-  header($obj->getAccessControlAllow("Origin"));
-  header($obj->getAccessControlAllow("Methods"));
-  header($obj->getAccessControlAllow("Headers"));
-  */
   $obj->setAccessControlHeader();
   echo json_encode($result);
+  exit(0);
 ?>

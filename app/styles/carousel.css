@@ -4,12 +4,12 @@
 
 .carousel-control .icon-prev:before {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 1.0);
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Yanone Kaffeesatz', serif; font-weight: normal;
   font-size: 2.5em;
 }
 
 .carousel-control .icon-next:before {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 1.0);
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Yanone Kaffeesatz', serif; font-weight: normal;
   font-size: 2.5em;
 }

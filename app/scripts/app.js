@@ -1,6 +1,18 @@
 'use strict';
 /* global app:true */
 
+var configURI = '//192.168.10.30/bb/api/config';
+
+window.deferredBootstrapper.bootstrap({
+  element: window.document.body,
+  module: 'angNewsApp',
+  resolve: {
+    CONFIG: function ($http) {
+      return $http.get(configURI);
+    }
+  }
+});
+
 var app = angular.module('angNewsApp', [
   'ngCookies',
   'ngResource',
@@ -15,6 +27,14 @@ var app = angular.module('angNewsApp', [
 .constant('APP_VERSION', '0.1')
 //.constant('LOCATION_NAME', 'Portovenere')
 ;
+// TODO: move to "/api/config.json"...
+
+/*
+app.config(function (CONFIG) {
+  console.log('in config() - CONFIG: ' + JSON.stringify(CONFIG));
+});
+*/
+
 app.config(function ($routeProvider/*, $httpProvider*/) {
   $routeProvider
     .when('/', {
@@ -109,7 +129,8 @@ app.config(function (datepickerPopupConfig) {
   datepickerPopupConfig.showButtonBar = false;
 });
 
-app.run(function (/*$rootScope*/ /*, $window*/) {
+app.run(function (/*CONFIG*/ /*, $rootScope*/ /*, $window*/) {
+  /*console.log('in run() - CONFIG: ' + JSON.stringify(CONFIG));*/
 /*
   $rootScope.cfg = {
     siteName: 'B&B Gli Olivi'

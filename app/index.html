@@ -23,17 +23,27 @@
     <link rel="stylesheet" href="styles/map.css">
     <link rel="stylesheet" href="styles/panel.css">
     <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans"> <!-- TODO: download locally (?...) -->
+    <!-- TODO: download locally (?...) -->
+    <!--<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Henny+Penny'>-->
+    <!--<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Unkempt'>-->
+    <!--<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans">-->
+    <!--<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Domine:400,700'>-->
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300,200'>
     <!-- endbuild -->
   </head>
-  <body ng-app="angNewsApp" style="overflow-y:hidden;">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div ng-include="'views/nav.html'"></div>
-    <div class="container" ng-view=""></div>
+
+    <div class="container toggle" ng-view=""></div>
+
+    <!-- TODO: put loading/error footer... -->
+    <div id="loading">Loading configuration...</div>
+    <div id="error">Could not load configuration, sorry!</div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!--
@@ -71,11 +81,12 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-deferred-bootstrap/angular-deferred-bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/config.js"></script>
+    <!--<script src="scripts/config.js"></script>-->
     <script src="scripts/app.js"></script>
     <!--<script src="scripts/controllers/main.js"></script>-->
     <script src="scripts/controllers/carousel-home.js"></script>
