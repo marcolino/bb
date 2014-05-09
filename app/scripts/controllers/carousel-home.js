@@ -8,7 +8,8 @@ app.controller('CarouselHomeCtrl', function ($scope, Carousel) {
     $scope.slides = Carousel.getSlides(
       function (result) { console.info(result); },
       function (error) { console.info('ERROR: '); console.info(error.statusText);
-                         $('#error').addClass('my-custom-error'); $('#error').html('Can\'t get slides: ' + error.statusText); }
+                          throw new Error('EXCEPTION CREATED.');
+                        }
     );
   };
 
