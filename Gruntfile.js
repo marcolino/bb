@@ -379,7 +379,7 @@ module.exports = function (grunt) {
 
   //grunt.loadNpmTasks('grunt-protractor-webdriver');
 
-  grunt.loadTasks('tasks');
+  //grunt.loadTasks('tasks');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {

@@ -6,6 +6,6 @@
     "Headers": "accept, origin, content-type"
   },
   "carouselImagesPath": "../images/carousel-home/",
-  "serverURL": "//192.168.10.30/bb/api/",
-  "serverURL2": "//www.portovenere.biz/bb/api/"
+  "serverURL": "http://192.168.10.30/bb/",
+  "XXserverURL2": "//www.portovenere.biz/bb/api/"
 }

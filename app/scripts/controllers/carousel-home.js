@@ -6,10 +6,12 @@ app.controller('CarouselHomeCtrl', function ($scope, Carousel) {
 
   $scope.getSlides = function() {
     $scope.slides = Carousel.getSlides(
+/*
       function (result) { console.info(result); },
-      function (error) { console.info('ERROR: '); console.info(error.statusText);
+      function (error) { console.info('ERROR: '); console.info(error);
                           throw new Error('EXCEPTION CREATED.');
                         }
+*/
     );
   };
 
@@ -18,7 +20,7 @@ app.controller('CarouselHomeCtrl', function ($scope, Carousel) {
     $scope.slides = Carousel.getSlide(
       { slideId: id },
       function () {},
-      function (error) { console.info(error.statusText); }
+      function (error) { /*console.info(error.statusText);*/ }
     );
   };
 
