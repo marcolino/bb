@@ -13,6 +13,11 @@ window.deferredBootstrapper.bootstrap({
   }
 });
 
+
+function showMessage(text, title, timeout) {
+  console.info(title + ': ' + text);
+}
+
 var app = angular.module('angNewsApp', [
   'ngCookies',
   'ngResource',
@@ -35,7 +40,7 @@ app.config(function (CONFIG) {
 });
 */
 
-app.config(function ($routeProvider/*, $httpProvider*/) {
+app.config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/carousel-home.html',
@@ -85,6 +90,48 @@ app.config(function ($routeProvider/*, $httpProvider*/) {
       templateUrl: '404.html'
     });
 
+/*
+  $httpProvider.interceptors.push('httpRequestInterceptor');
+
+  app.factory('httpRequestInterceptor', function ($q, $location) {
+    return {
+      'responseError': function(rejection) {
+        // do something on error
+        if (rejection.status === 404) {
+          $location.path('/404/');
+          return $q.reject(rejection);
+        }
+      }
+    };
+  });
+*/
+/*
+  $httpProvider.responseInterceptors.push(function($timeout, $q) {
+    return function(promise) {
+      return promise.then(function(successResponse) {
+        if (successResponse.config.method.toUpperCase() !== 'GET') {
+          showMessage('Success', 'successMessage', 5000);
+        }
+        return successResponse;
+      }, function(errorResponse) {
+        switch (errorResponse.status) {
+          case 401:
+            showMessage('Wrong usename or password', 'errorMessage', 20000);
+            break;
+          case 403:
+            showMessage('You don\'t have the right to do this', 'errorMessage', 20000);
+            break;
+          case 500:
+            showMessage('Server internal error: ' + errorResponse.data, 'errorMessage', 20000);
+            break;
+          default:
+            showMessage('Error ' + errorResponse.status + ': ' + errorResponse.data, 'errorMessage', 20000);
+        }
+        return $q.reject(errorResponse);
+      });
+    };
+  });
+*/
   /*
   // push a responseInterceptor to httpProvider to simulate network slow-downs...
   $httpProvider.responseInterceptors.push(function ($q, $timeout) {
